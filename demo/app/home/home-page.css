@@ -1,0 +1,30 @@
+.content {
+    font-size: 16;
+    font-weight: bold;
+    margin-top: 12;
+    margin-bottom: 6;
+    color: #303F9F;
+}
+
+timepickerfield.apply-css,
+datepickerfield.apply-css {
+    color: #CDDC39; 
+    background-color: #00796B;
+    font-size: 20;
+    font-weight: bold;
+    padding: 20;
+}
+
+.date-time-picker.apply-css {
+    color: #00796B;
+    background-color: #CDDC39;
+}
+
+.date-time-picker-spinners.apply-css {
+    color: #CDDC39;
+    background-color: #00796B;
+}
+
+.date-time-picker-buttons.apply-css {
+    color: #00796B;
+}

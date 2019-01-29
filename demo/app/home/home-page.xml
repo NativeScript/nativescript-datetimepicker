@@ -1,0 +1,76 @@
+<Page class="page"
+    navigatingTo="onNavigatingTo" 
+    xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:datetime="nativescript-datetimepicker">
+    
+    <ActionBar class="action-bar">
+        <Label class="action-bar-title" text="DateTimePicker Demo TS"></Label>
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-20">
+            <Label text="basic usage" class="content" android:paddingLeft="4"/>
+            <datetime:DatePickerField hint="select date"/>
+            <datetime:TimePickerField hint="select time"/>
+            <StackLayout class="hr-light m-10" android:visibility="collapse"/>
+
+            <Label text="initial values" class="content" android:paddingLeft="4"/>
+            <datetime:DatePickerField date="2019/02/24"/>
+            <datetime:TimePickerField time="01:00"/>
+            <StackLayout class="hr-light m-10" android:visibility="collapse"/>
+
+            <Label text="min and max date" class="content" android:paddingLeft="4"/>
+            <datetime:DatePickerField minDate="2020/02/02" maxDate="2021/02/02" hint="tap to select"/>
+            <StackLayout class="hr-light m-10" android:visibility="collapse"/>
+
+            <Label text="time format 12h" class="content" android:paddingLeft="4"/>
+            <datetime:TimePickerField time="16:00" timeFormat="h:mm a" locale="en_US" />
+            <StackLayout class="hr-light m-10" android:visibility="collapse"/>
+
+            <Label text="time format 24h" class="content" android:paddingLeft="4"/>
+            <datetime:TimePickerField time="16:00" timeFormat="HH:mm" locale="en_UK" />
+            <StackLayout class="hr-light m-10" android:visibility="collapse"/>
+
+            <Label text="modified picker texts" class="content" android:paddingLeft="4"/>
+            <datetime:DatePickerField hint="tap to choose" pickerOkText="Approve" pickerCancelText="Reject" 
+                pickerTitle="Confirm predefined date selection" pickerDefaultDate="2019/05/15"/>
+            <datetime:TimePickerField hint="tap to choose" pickerOkText="Approve" pickerCancelText="Reject" 
+                pickerTitle="Confirm predefined time selection" pickerDefaultTime="22:00"/>
+            <StackLayout class="hr-light m-10" android:visibility="collapse"/>
+            
+            <Label text="preferred locale: en_US" class="content" android:paddingLeft="4"/>
+            <datetime:DatePickerField locale="en_US" hint="select date" pickerOkText="OK"
+                pickerCancelText="Cancel" pickerTitle="Select date"/>
+            <datetime:TimePickerField locale="en_US" hint="select time" pickerOkText="OK"
+                pickerCancelText="Cancel" pickerTitle="Select time"/>
+            <StackLayout class="hr-light m-10" android:visibility="collapse"/>
+            
+            <Label text="preferred locale: de_DE" class="content" android:paddingLeft="4"/>
+            <datetime:DatePickerField locale="de_DE" hint="datum auswählen" pickerOkText="Bestätigen"
+                pickerCancelText="Stornieren" pickerTitle="Datum auswählen"/>
+            <datetime:TimePickerField locale="de_DE" hint="zeit wählen" pickerOkText="Bestätigen"
+                pickerCancelText="Stornieren" pickerTitle="Zeit wählen"/>
+            <StackLayout class="hr-light m-10" android:visibility="collapse"/>
+            
+            <Label text="custom format" class="content" android:paddingLeft="4"/>
+            <datetime:DatePickerField date="2019/02/24" dateFormat="'date': dd MMMM yyyy"/>
+            <datetime:TimePickerField time="01:00" timeFormat="'time': HH:mm"/>
+            <StackLayout class="hr-light m-10" android:visibility="collapse"/>
+            
+            <Label text="binding" class="content" android:paddingLeft="4"/>
+            <Label text="{{ dateTime }}" android:paddingLeft="4"/>
+            <datetime:DatePickerField date="{{ dateTime }}"/>
+            <datetime:TimePickerField time="{{ dateTime }}"/>
+            <StackLayout class="hr-light m-10" android:visibility="collapse"/>
+            
+            <Label text="css applied" class="content" android:paddingLeft="4"/>
+            <datetime:DatePickerField date="2019/02/24" pickerTitle="select date" class="apply-css"/>
+            <datetime:TimePickerField time="01:00" pickerTitle="select time" class="apply-css"/>
+            <StackLayout class="hr-light m-10" android:visibility="collapse"/>
+            
+            <Label text="custom button" class="content" android:paddingLeft="4"/>
+            <Button text="{{ dateText }}" tap="{{ onPickDateTap }}"/>
+            <Button text="{{ timeText }}" tap="{{ onPickTimeTap }}"/>
+        </StackLayout>
+    </ScrollView>
+</Page>
