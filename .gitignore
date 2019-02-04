@@ -7,6 +7,7 @@ node_modules/
 *.tns.json
 *.metadata.json
 *.log
+!*build-native.js
 !demo/karma.conf.js
 !demo/app/tests/*.js
 demo/platforms/
@@ -17,9 +18,11 @@ demo-vue/platforms/
 *.aar
 /src/*.tgz
 *.d.ts
+!*references.d.ts
 !*index.d.ts
 !*datetimepicker.d.ts
 !*date-picker-field.d.ts
 !*time-picker-field.d.ts
 /publish/package/*.tgz
 /publish/package/**/*
+/publish/src/**/*

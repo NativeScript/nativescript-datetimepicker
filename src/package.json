@@ -31,8 +31,7 @@
         "clean": "npm run demo.reset && npx rimraf -- node_modules package-lock.json && npm i",
         "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**' --exclude '**/platforms/**'",
         "ngc": "ngc -p tsconfig.json",
-        "prepare": "npm run ngc",
-        "prepack": "npm run build.native"
+        "prepack": "npm run ngc && npm run build.native"
     },
     "keywords": [
         "NativeScript",
