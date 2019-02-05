@@ -17,12 +17,6 @@ demo-vue/platforms/
 !demo-vue/app/app.js
 *.aar
 /src/*.tgz
-*.d.ts
-!*references.d.ts
-!*index.d.ts
-!*datetimepicker.d.ts
-!*date-picker-field.d.ts
-!*time-picker-field.d.ts
 /publish/package/*.tgz
 /publish/package/**/*
 /publish/src/**/*
