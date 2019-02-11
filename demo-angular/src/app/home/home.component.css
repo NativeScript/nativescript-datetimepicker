@@ -6,6 +6,15 @@
     color: #303F9F;
 }
 
+label {
+    padding: 6 4;
+}
+
+timepickerfield,
+datepickerfield {
+    padding: 12 4;
+}
+
 timepickerfield.apply-css,
 datepickerfield.apply-css {
     color: #CDDC39;

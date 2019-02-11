@@ -21,6 +21,7 @@
             ]
         }
     },
+    "include": [ "index.ts" ],
     "exclude": [
         "node_modules",
         "platforms"
