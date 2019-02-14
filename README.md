@@ -13,7 +13,10 @@ A [NativeScript](https://www.nativescript.org) plugin that provides ui elements 
 - [Contribute](#contribute)
 - [Get Help](#get-help)
 
+## Screenshots
+
 <img alt="DatePickerField on iOS (left) and Android (right)"  src="https://raw.githubusercontent.com/NativeScript/nativescript-datetimepicker/master/docs/date_picker_field.png" width="500px"/>
+
 <img alt="TimePickerField on iOS (left) and Android (right)" src="https://raw.githubusercontent.com/NativeScript/nativescript-datetimepicker/master/docs/time_picker_field.png" width="500px"/>
 
 ## Installation
