@@ -1,5 +1,9 @@
 # NativeScript DateTimePicker
 
+[![npm](https://img.shields.io/npm/v/nativescript-datetimepicker.svg)](https://www.npmjs.com/package/nativescript-datetimepicker)
+[![npm](https://img.shields.io/npm/dm/nativescript-datetimepicker.svg)](https://www.npmjs.com/package/nativescript-datetimepicker)
+[![Build Status](https://travis-ci.org/NativeScript/nativescript-datetimepicker.svg?branch=master)](https://travis-ci.org/NativeScript/nativescript-datetimepicker)
+ 
 A [NativeScript](https://www.nativescript.org) plugin that provides ui elements for picking date and time. The plugin provides two fields - `DatePickerField` and `TimePickerField` - both are NativeScript Views that show selected date or time and allow picking another after being tapped. There is also a `DateTimePicker` class which provides static methods `pickDate` and `pickTime` that can be called to show the same dialog picker as the fields.
 
 <!-- TOC depthFrom:2 -->
