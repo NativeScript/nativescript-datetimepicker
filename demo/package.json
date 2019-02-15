@@ -11,6 +11,10 @@
     "description": "NativeScript DateTimePicker Demo Core",
     "license": "SEE LICENSE IN LINCENSE",
     "repository": "https://github.com/NativeScript/nativescript-datetimepicker",
+    "scripts": {
+        "ci.tslint": "npm i && tslint --config '../tslint.json' 'app/**/*.ts'",
+        "build.plugin": "cd ../src && npm run build"
+    },
     "dependencies": {
         "nativescript-datetimepicker": "file:../src",
         "nativescript-theme-core": "~1.0.4",
@@ -18,7 +22,8 @@
     },
     "devDependencies": {
         "nativescript-dev-typescript": "~0.7.0",
-        "nativescript-dev-webpack": "~0.19.0"
+        "nativescript-dev-webpack": "~0.19.0",
+        "tslint": "~5.11.0"
     },
     "readme": "NativeScript DateTimePicker Demo Core"
 }
