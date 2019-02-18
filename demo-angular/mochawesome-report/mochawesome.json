@@ -1,0 +1,194 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2019-02-14T15:52:46.477Z",
+    "end": "2019-02-14T15:53:24.919Z",
+    "duration": 38442,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "2907fddf-414b-4a0e-9d6d-49cc0f5de2c5",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [
+      {
+        "title": "\"before all\" hook: start server",
+        "fullTitle": "\"before all\" hook: start server",
+        "timedOut": false,
+        "duration": 1368,
+        "pass": false,
+        "fail": false,
+        "pending": false,
+        "code": "__awaiter(this, void 0, void 0, function* () {\n    yield nativescript_dev_appium_1.startServer();\n})",
+        "err": {},
+        "isRoot": true,
+        "uuid": "81aaa507-15f8-43f3-8cc3-2c9b0b0f80a2",
+        "isHook": true,
+        "skipped": false
+      }
+    ],
+    "afterHooks": [
+      {
+        "title": "\"after all\" hook: stop server",
+        "fullTitle": "\"after all\" hook: stop server",
+        "timedOut": false,
+        "duration": 12,
+        "pass": false,
+        "fail": false,
+        "pending": false,
+        "code": "__awaiter(this, void 0, void 0, function* () {\n    yield nativescript_dev_appium_1.stopServer();\n})",
+        "err": {},
+        "isRoot": true,
+        "uuid": "5b2bd580-5697-42ce-8f74-a4f72dd14623",
+        "isHook": true,
+        "skipped": false
+      }
+    ],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "ed6cb00e-9ac0-45e6-9328-daa7867d289f",
+        "title": "DateTimePicker",
+        "fullFile": "/Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/e2e/tests.e2e.js",
+        "file": "/e2e/tests.e2e.js",
+        "beforeHooks": [
+          {
+            "title": "\"before all\" hook",
+            "fullTitle": "DateTimePicker \"before all\" hook",
+            "timedOut": false,
+            "duration": 33080,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "__awaiter(this, void 0, void 0, function* () {\n        driver = yield nativescript_dev_appium_1.createDriver();\n        driver.defaultWaitTime = 15000;\n        let dir = \"mochawesome-report\";\n        if (!fs.existsSync(dir)) {\n            fs.mkdirSync(dir);\n        }\n        rimraf('mochawesome-report/*', function () { });\n    })",
+            "err": {},
+            "isRoot": false,
+            "uuid": "ca8fd459-3a15-4d0d-a2e5-e9cac8946ac9",
+            "isHook": true,
+            "skipped": false
+          }
+        ],
+        "afterHooks": [
+          {
+            "title": "\"after all\" hook",
+            "fullTitle": "DateTimePicker \"after all\" hook",
+            "timedOut": false,
+            "duration": 182,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "__awaiter(this, void 0, void 0, function* () {\n        if (isSauceRun) {\n            driver.sessionId().then(function (sessionId) {\n                console.log(\"Report https://saucelabs.com/beta/tests/\" + sessionId);\n            });\n        }\n        yield driver.quit();\n        console.log(\"Quit driver!\");\n    })",
+            "err": {},
+            "isRoot": false,
+            "uuid": "522e849d-70e1-4efb-b65a-de09d1160bfc",
+            "isHook": true,
+            "skipped": false
+          },
+          {
+            "title": "\"after each\" hook",
+            "fullTitle": "DateTimePicker \"after each\" hook",
+            "timedOut": false,
+            "duration": 0,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "return __awaiter(this, void 0, void 0, function* () {\n    if (this.currentTest.state && this.currentTest.state === \"failed\") {\n        let png = yield driver.logScreenshot(this.currentTest.title);\n        fs.copyFile(png, './mochawesome-report/' + this.currentTest.title + '.png', function (err) {\n            if (err) {\n                throw err;\n            }\n            console.log('Screenshot saved.');\n        });\n        addContext(this, './' + this.currentTest.title + '.png');\n    }\n});",
+            "err": {},
+            "isRoot": false,
+            "uuid": "aaf22067-f287-4ba2-96d0-5ed33b7f1406",
+            "isHook": true,
+            "skipped": false
+          }
+        ],
+        "tests": [
+          {
+            "title": "Should verify demo title",
+            "fullTitle": "DateTimePicker Should verify demo title",
+            "timedOut": false,
+            "duration": 224,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "__awaiter(this, void 0, void 0, function* () {\n        const title = yield driver.findElementByText(\"DateTimePicker Demo NG\", nativescript_dev_appium_1.SearchOptions.exact);\n        chai_1.expect(title).to.exist;\n    })",
+            "err": {},
+            "isRoot": false,
+            "uuid": "a030308c-bee6-4b18-97da-176afeb4334c",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "Should select date and verify value of picker field",
+            "fullTitle": "DateTimePicker Should select date and verify value of picker field",
+            "timedOut": false,
+            "duration": 1670,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "__awaiter(this, void 0, void 0, function* () {\n        const selectDateField = yield driver.findElementByText(\"select date\", nativescript_dev_appium_1.SearchOptions.contains);\n        yield selectDateField.click();\n        const okBtn = yield driver.findElementByText(\"OK\", nativescript_dev_appium_1.SearchOptions.exact);\n        yield okBtn.click();\n        const date = helper_1.getDateString();\n        console.log(date);\n        const dateSelected = yield driver.findElementByText(date);\n        chai_1.expect(dateSelected).to.exist;\n    })",
+            "err": {},
+            "isRoot": false,
+            "uuid": "894dcc7f-6a79-457b-aa6e-17be5fac4dba",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "Should select time and verify value of picker field",
+            "fullTitle": "DateTimePicker Should select time and verify value of picker field",
+            "timedOut": false,
+            "duration": 1897,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "__awaiter(this, void 0, void 0, function* () {\n        const selectTimeField = yield driver.findElementByText(\"select time\", nativescript_dev_appium_1.SearchOptions.contains);\n        yield selectTimeField.click();\n        const okBtn = yield driver.findElementByText(\"OK\", nativescript_dev_appium_1.SearchOptions.exact);\n        yield okBtn.click();\n        const timeString = helper_1.getTimeString();\n        console.log(timeString);\n        const timeSelected = yield driver.findElementByText(timeString);\n        chai_1.expect(timeSelected).to.exist;\n    })",
+            "err": {},
+            "isRoot": false,
+            "uuid": "a1fb3c3c-754c-4f2a-99d1-7f2c55d5184e",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "a030308c-bee6-4b18-97da-176afeb4334c",
+          "894dcc7f-6a79-457b-aa6e-17be5fac4dba",
+          "a1fb3c3c-754c-4f2a-99d1-7f2c55d5184e"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 3791,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 999999
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 999999
+  },
+  "copyrightYear": 2019
+}
