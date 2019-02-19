@@ -110,7 +110,10 @@ function getColorsForClassName(view: View, className: string): { color: Color, b
         tempView[vueKey] = view[vueKey];
     }
     if (view.className) {
-        tempView.cssClasses.add(view.className);
+        let classNames = view.className.split(' ');
+        classNames.forEach(element => {
+            tempView.cssClasses.add(element);
+        });
     }
     if (className) {
         tempView.cssClasses.add(className);
