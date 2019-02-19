@@ -2,14 +2,14 @@
     "nativescript": {
         "id": "org.nativescript.datetimepicker.demo",
         "tns-android": {
-            "version": "5.1.0"
+            "version": "5.2.0"
         },
         "tns-ios": {
-            "version": "5.1.0"
+            "version": "5.2.0"
         }
     },
     "description": "NativeScript DateTimePicker Demo Core",
-    "license": "SEE LICENSE IN LINCENSE",
+    "license": "SEE LICENSE IN LICENSE",
     "repository": "https://github.com/NativeScript/nativescript-datetimepicker",
     "scripts": {
         "ci.tslint": "npm i && tslint --config '../tslint.json' 'app/**/*.ts'",
@@ -18,11 +18,11 @@
     "dependencies": {
         "nativescript-datetimepicker": "file:../src",
         "nativescript-theme-core": "~1.0.4",
-        "tns-core-modules": "~5.1.0"
+        "tns-core-modules": "~5.2.0"
     },
     "devDependencies": {
-        "nativescript-dev-typescript": "~0.7.0",
-        "nativescript-dev-webpack": "~0.19.0",
+        "nativescript-dev-typescript": "~0.8.0",
+        "nativescript-dev-webpack": "~0.20.0",
         "tslint": "~5.11.0"
     },
     "readme": "NativeScript DateTimePicker Demo Core"
