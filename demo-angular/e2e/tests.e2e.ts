@@ -2,7 +2,7 @@ import { AppiumDriver, createDriver, SearchOptions } from "nativescript-dev-appi
 import { isSauceLab, runType } from "nativescript-dev-appium/lib/parser";
 import { expect } from "chai";
 import { ok } from "assert";
-import { getDateString, getTimeString } from "./helper";
+import { getDateString, getPickerTime } from "./helper";
 const fs = require('fs');
 const addContext = require('mochawesome/addContext');
 const rimraf = require('rimraf');
@@ -65,12 +65,17 @@ describe("DateTimePicker", () => {
     it("Should select time and verify value of picker field", async () => {
         const selectTimeField = await driver.findElementByText("select time", SearchOptions.contains);
         await selectTimeField.click();
+        const timeString = await getPickerTime();
+
         const okBtn = await driver.findElementByText("OK", SearchOptions.exact);
         await okBtn.click();
-        const timeString = getTimeString();
-        console.log(timeString);
-        const timeSelected = await driver.findElementByText(timeString);
+        const timeSelected = await driver.findElementByText(timeString, SearchOptions.contains);
         expect(timeSelected).to.exist;
-    })
+    });
+
+    it("Should select date from min/max limited field", async () => {
+        const minMaxLabel = await driver.findElementByText("min and max date", SearchOptions.contains);
+        
+    });
 
 });

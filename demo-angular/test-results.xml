@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="3.791" tests="3" failures="0">
-  <testsuite name="Root Suite" timestamp="2019-02-14T15:52:46" tests="0" failures="0" time="0">
+<testsuites name="Mocha Tests" time="8.8" tests="3" failures="0">
+  <testsuite name="Root Suite" timestamp="2019-02-19T11:23:12" tests="0" failures="0" time="0">
   </testsuite>
-  <testsuite name="DateTimePicker" timestamp="2019-02-14T15:52:47" tests="3" file="/Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/e2e/tests.e2e.js" failures="0" time="3.791">
-    <testcase name="DateTimePicker Should verify demo title" time="0.224" classname="Should verify demo title">
+  <testsuite name="DateTimePicker" timestamp="2019-02-19T11:23:13" tests="3" file="/Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/e2e/tests.e2e.js" failures="0" time="8.8">
+    <testcase name="DateTimePicker Should verify demo title" time="0.495" classname="Should verify demo title">
     </testcase>
-    <testcase name="DateTimePicker Should select date and verify value of picker field" time="1.67" classname="Should select date and verify value of picker field">
+    <testcase name="DateTimePicker Should select date and verify value of picker field" time="4.071" classname="Should select date and verify value of picker field">
     </testcase>
-    <testcase name="DateTimePicker Should select time and verify value of picker field" time="1.897" classname="Should select time and verify value of picker field">
+    <testcase name="DateTimePicker Should select time and verify value of picker field" time="4.234" classname="Should select time and verify value of picker field">
     </testcase>
   </testsuite>
 </testsuites>

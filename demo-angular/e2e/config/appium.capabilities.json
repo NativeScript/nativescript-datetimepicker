@@ -35,13 +35,15 @@
     "android24": {
         "platformName": "Android",
         "platformVersion": "7.0",
-        "deviceName": "Android_GoogleAPI_Emulator",
-        "avd": "Android_GoogleAPI_Emulator",
+        "deviceName": "Android GoogleAPI Emulator",
         "lt": 60000,
         "newCommandTimeout": 720,
-        "noReset": false,
+        "appium-version": "1.9.1",
+        "noReset": true,
         "fullReset": false,
-        "app": ""
+        "app": "",
+        "idleTimeout": 120,
+        "automationName": "Appium"
     },
     "android25": {
         "platformName": "Android",
@@ -107,9 +109,14 @@
         "platformName": "iOS",
         "platformVersion": "/12*/",
         "deviceName": "iPhone X",
-        "noReset": false,
+        "appium-version": "1.9.1",
+        "app": "/Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/platforms/ios/build/Debug-iphonesimulator/demoangular.app",
+        "noReset": true,
         "fullReset": false,
-        "app": ""
+        "density": 3,
+        "offsetPixels": 87,
+        "idleTimeout": 120,
+        "automationName": "Appium"
     },
     "sim.iPhoneXS": {
         "platformName": "ios",
