@@ -71,11 +71,20 @@ android:
     - android-28
     - extra-android-m2repository
 
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+
+cache:
+  directories:
+    - .nvm
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
 before_install:
-    - sudo pip install --upgrade pip
-    - sudo pip install six
+  - sudo pip install --upgrade pip
+  - sudo pip install six
 
 install:
-    - echo no | npm install -g nativescript
-    - tns usage-reporting disable
-    - tns error-reporting disable
+  - echo no | npm install -g nativescript
+  - tns usage-reporting disable
+  - tns error-reporting disable
