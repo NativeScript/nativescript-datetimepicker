@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="8.8" tests="3" failures="0">
-  <testsuite name="Root Suite" timestamp="2019-02-19T11:23:12" tests="0" failures="0" time="0">
+<testsuites name="Mocha Tests" time="55.105" tests="1" failures="1">
+  <testsuite name="Root Suite" timestamp="2019-02-20T16:34:58" tests="0" failures="0" time="0">
   </testsuite>
-  <testsuite name="DateTimePicker" timestamp="2019-02-19T11:23:13" tests="3" file="/Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/e2e/tests.e2e.js" failures="0" time="8.8">
-    <testcase name="DateTimePicker Should verify demo title" time="0.495" classname="Should verify demo title">
-    </testcase>
-    <testcase name="DateTimePicker Should select date and verify value of picker field" time="4.071" classname="Should select date and verify value of picker field">
-    </testcase>
-    <testcase name="DateTimePicker Should select time and verify value of picker field" time="4.234" classname="Should select time and verify value of picker field">
+  <testsuite name="DateTimePicker" timestamp="2019-02-20T16:34:59" tests="1" file="/Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/e2e/tests.e2e.js" failures="1" time="55.105">
+    <testcase name="DateTimePicker Should select date from de_De locale picker and verify format" time="55.105" classname="Should select date from de_De locale picker and verify format">
+      <failure message="[waitForElementByXPath(&quot;//*[contains(translate(@content-desc,&apos;ABCDEFGHIJKLMNOPQRSTUVWXYZ&apos;,&apos;abcdefghijklmnopqrstuvwxyz&apos;),&apos;bestätigen&apos;) or contains(translate(@resource-id,&apos;ABCDEFGHIJKLMNOPQRSTUVWXYZ&apos;,&apos;abcdefghijklmnopqrstuvwxyz&apos;),&apos;bestätigen&apos;) or contains(translate(@text,&apos;ABCDEFGHIJKLMNOPQRSTUVWXYZ&apos;,&apos;abcdefghijklmnopqrstuvwxyz&apos;),&apos;bestätigen&apos;)]&quot;,15000)] Element condition wasn&apos;t satisfied!" type="Error"><![CDATA[Error: [waitForElementByXPath("//*[contains(translate(@content-desc,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'bestätigen') or contains(translate(@resource-id,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'bestätigen') or contains(translate(@text,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'bestätigen')]",15000)] Element condition wasn't satisfied!
+    at /Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/node_modules/wd/lib/commands.js:980:12
+    at /Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/node_modules/wd/lib/commands.js:885:11
+    at /Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/node_modules/wd/lib/commands.js:967:13
+    at /Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/node_modules/wd/node_modules/async/dist/async.js:3679:13
+    at /Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/node_modules/wd/node_modules/async/dist/async.js:486:20
+    at replenish (node_modules/wd/node_modules/async/dist/async.js:879:29)
+    at /Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/node_modules/wd/node_modules/async/dist/async.js:888:13
+    at eachOfLimit (node_modules/wd/node_modules/async/dist/async.js:915:26)
+    at /Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/node_modules/wd/node_modules/async/dist/async.js:920:20
+    at _parallel (node_modules/wd/node_modules/async/dist/async.js:3670:9)
+    at Object.series (node_modules/wd/node_modules/async/dist/async.js:4496:7)
+    at /Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/node_modules/wd/lib/commands.js:965:15
+    at /Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/node_modules/wd/lib/promise-webdriver.js:52:11
+    at _fulfilled (node_modules/q/q.js:834:54)
+    at /Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/node_modules/q/q.js:863:30
+    at Promise.promise.promiseDispatch (node_modules/q/q.js:796:13)
+    at /Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/node_modules/q/q.js:604:44
+    at runSingle (node_modules/q/q.js:137:13)
+    at flush (node_modules/q/q.js:125:13)
+    at process._tickCallback (internal/process/next_tick.js:61:11)]]></failure>
     </testcase>
   </testsuite>
 </testsuites>

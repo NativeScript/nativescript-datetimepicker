@@ -4,45 +4,56 @@ import { runType } from "nativescript-dev-appium/lib/parser";
 const isAndroid: boolean = runType.includes("android");
 const optionsText = "Options";
 const moreOptionsID = "More options";
+let driver: AppiumDriver;
 
-export function getDateString() {
-    const date = new Date();
-    let year = date.getFullYear().toString();
-    let month = date.toLocaleString('en-us', { month: 'short' });
-    let day = date.getDate().toString();
-    if (date.getDate() < 10) {
-        day = "0" + date.getDay().toString();
-    }
-    const dateString = month + " " + day + ", " + year;
-    return dateString;
-}
-
- export async function getPickerTime() {
-    let driver: AppiumDriver;
-    driver = await createDriver();
-    driver.defaultWaitTime = 15000;
+ export async function getPickerTime(driver: AppiumDriver, format: number) {
     let selector = isAndroid ? "android.widget.EditText" : "XCUIElementTypePickerWheel";
     const pickerWheels = await driver.findElementsByClassName(selector);
     let hourWheel = await (await pickerWheels[0]).text();
     let minutesWheel = await (await pickerWheels[1]).text();
-    const amPmWheel = await (await pickerWheels[2]).text();
     if(!isAndroid){
         hourWheel = hourWheel.slice(0, hourWheel.indexOf(" "));
         minutesWheel = minutesWheel.slice(0, minutesWheel.indexOf(" "));
     }
-    const timeString = hourWheel + ":" + minutesWheel + " " + amPmWheel;
+    let timeString = hourWheel + ":" + minutesWheel;
+    if(format == 12){
+        const amPmWheel = await (await pickerWheels[2]).text();
+        timeString +=  " " + amPmWheel;
+    }
     return timeString;
 }
 
-export async function getPickerDate() {
-    let driver: AppiumDriver;
-    driver = await createDriver();
-    driver.defaultWaitTime = 15000;
+export async function getPickerDate(driver: AppiumDriver) {
     let selector = isAndroid ? "android.widget.EditText" : "XCUIElementTypePickerWheel";
     const pickerWheels = await driver.findElementsByClassName(selector);
-    let monthWheel = await (await pickerWheels[0]).text();
+    let monthWheel = await (await pickerWheels[0]).text()
+    let month = monthWheel.toString().substring(0, 3);
     let dayWheel = await (await pickerWheels[1]).text();
+    if(parseInt(dayWheel) < 10){
+        dayWheel = dayWheel.substring(1,2);
+    }
     const yearWheel = await (await pickerWheels[2]).text();
-    const timeString = monthWheel + ":" + dayWheel + " " + yearWheel;
-    return timeString;
+    const dateString = month + " " + dayWheel + ", " + yearWheel;
+    return dateString;
+}
+
+export async function clickOkBtn(driver: AppiumDriver){
+    const okBtn = await driver.findElementByText("OK", SearchOptions.exact);
+    await okBtn.click();
+}
+
+export async function scrollToElement(driver: AppiumDriver, element: string, direction: Direction = Direction.down) {
+    let listView;
+    if (isAndroid) {
+        listView = await driver.findElementByClassName("android.widget.FrameLayout");
+    }
+    else {
+        listView = await driver.findElementByClassName("XCUIElementTypeApplication");
+    }
+    const listItem = await listView.scrollTo(
+        direction,
+        () => driver.findElementByText(element, SearchOptions.contains),
+        600
+    );
+    return listItem;
 }
