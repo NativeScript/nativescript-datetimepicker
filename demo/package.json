@@ -1,6 +1,6 @@
 {
     "nativescript": {
-        "id": "org.nativescript.datetimepicker.demo123",
+        "id": "org.nativescript.datetimepicker.demo",
         "tns-android": {
             "version": "5.1.0"
         },
