@@ -1,17 +1,16 @@
 import { AppiumDriver, SearchOptions,createDriver, Direction, UIElement } from "nativescript-dev-appium";
 import { runType } from "nativescript-dev-appium/lib/parser";
 
-const isAndroid: boolean = runType.includes("android");
 const optionsText = "Options";
 const moreOptionsID = "More options";
 let driver: AppiumDriver;
 
  export async function getPickerTime(driver: AppiumDriver, format: number) {
-    let selector = isAndroid ? "android.widget.EditText" : "XCUIElementTypePickerWheel";
+    let selector = driver.isAndroid ? "android.widget.EditText" : "XCUIElementTypePickerWheel";
     const pickerWheels = await driver.findElementsByClassName(selector);
     let hourWheel = await (await pickerWheels[0]).text();
     let minutesWheel = await (await pickerWheels[1]).text();
-    if(!isAndroid){
+    if(!driver.isAndroid){
         hourWheel = hourWheel.slice(0, hourWheel.indexOf(" "));
         minutesWheel = minutesWheel.slice(0, minutesWheel.indexOf(" "));
     }
@@ -24,12 +23,12 @@ let driver: AppiumDriver;
 }
 
 export async function getPickerDate(driver: AppiumDriver) {
-    let selector = isAndroid ? "android.widget.EditText" : "XCUIElementTypePickerWheel";
+    let selector = driver.isAndroid ? "android.widget.EditText" : "XCUIElementTypePickerWheel";
     const pickerWheels = await driver.findElementsByClassName(selector);
     let monthWheel = await (await pickerWheels[0]).text()
     let month = monthWheel.toString().substring(0, 3);
     let dayWheel = await (await pickerWheels[1]).text();
-    if(parseInt(dayWheel) < 10){
+    if(parseInt(dayWheel) < 10 && driver.isAndroid){
         dayWheel = dayWheel.substring(1,2);
     }
     const yearWheel = await (await pickerWheels[2]).text();
@@ -43,8 +42,8 @@ export async function clickOkBtn(driver: AppiumDriver){
 }
 
 export async function scrollToElement(driver: AppiumDriver, element: string, direction: Direction = Direction.down) {
-    let listView;
-    if (isAndroid) {
+    let listView: UIElement;
+     if (driver.isAndroid) {
         listView = await driver.findElementByClassName("android.widget.FrameLayout");
     }
     else {

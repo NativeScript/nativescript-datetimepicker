@@ -1,13 +1,12 @@
-import { AppiumDriver, createDriver, SearchOptions, Direction} from "nativescript-dev-appium";
+import { AppiumDriver, createDriver, SearchOptions, Direction } from "nativescript-dev-appium";
 import { isSauceLab, runType } from "nativescript-dev-appium/lib/parser";
 import { expect } from "chai";
 import { ok } from "assert";
-import { getPickerTime, clickOkBtn, scrollToElement, getPickerDate} from "./helper";
+import { getPickerTime, clickOkBtn, scrollToElement, getPickerDate } from "./helper";
 const fs = require('fs');
 const addContext = require('mochawesome/addContext');
 const rimraf = require('rimraf');
 const isSauceRun = isSauceLab;
-const isAndroid: boolean = runType.includes("android");
 
 describe("DateTimePicker", () => {
     const defaultWaitTime = 5000;
@@ -74,6 +73,7 @@ describe("DateTimePicker", () => {
         await minMaxDatePicker.click();
         const date = await getPickerDate(driver);
         await clickOkBtn(driver);
+        console.log(date);
         const dateSelected = await driver.findElementByText(date);
         expect(dateSelected).to.exist;
     });
@@ -95,7 +95,7 @@ describe("DateTimePicker", () => {
     });
 
     it("Should verify modified texts field for date picker", async () => {
-        await scrollToElement(driver, "modified picker texts", Direction.down);
+        await scrollToElement(driver, "preferred locale: en_US", Direction.down);
         const pickers = await driver.findElementsByText("tap to choose");
         const datePicker = pickers[0];
         await datePicker.click();
@@ -133,10 +133,10 @@ describe("DateTimePicker", () => {
         const datePicker = await driver.findElementByText("datum auswählen", SearchOptions.contains);
         await datePicker.click();
         const date = await getPickerDate(driver);
-        let selector = isAndroid ? "android.widget.Button" : "Bestätigen";
+        let selector = driver.isAndroid ? "android.widget.Button" : "Bestätigen";
         let acceptBtn;
         let rejectBtn;
-        if(isAndroid){
+        if(driver.isAndroid){
             let buttons = await driver.findElementsByClassName(selector);
             acceptBtn = buttons[7];
             rejectBtn = buttons[6];
@@ -162,13 +162,13 @@ describe("DateTimePicker", () => {
     it("Should select time from de_DE locale picker and verify format", async () => {
         const timePicker = await driver.findElementByText("zeit wählen", SearchOptions.contains);
         await timePicker.click();
-        const time = await getPickerTime(driver, 12);
+        const time = await getPickerTime(driver, 24);
         let acceptBtn;
         let rejectBtn;
-        if(isAndroid){
+        if(driver.isAndroid){
             let buttons = await driver.findElementsByClassName("android.widget.Button");
-            acceptBtn = buttons[6];
-            rejectBtn = buttons[5];
+            acceptBtn = buttons[5];
+            rejectBtn = buttons[4];
         }
         else{
             acceptBtn = await driver.findElementByText("Bestätigen", SearchOptions.exact);
@@ -179,11 +179,8 @@ describe("DateTimePicker", () => {
         expect(rejectBtn).to.exist;
         expect(title).to.exist;
         await acceptBtn.click();
-        let timeString = time.substr(0, time.indexOf(" "));
-        timeString = timeString + " nachm.";
-        console.log(timeString);
-        const dateField = await driver.findElementByText(timeString);
-        expect(timeString).to.exist;
+        const dateField = await driver.findElementByText(time);
+        expect(time).to.exist;
     });
 
     it("Should scroll to custom format and verify values", async () => {
@@ -200,11 +197,11 @@ describe("DateTimePicker", () => {
         await scrollToElement(driver, "css applied", Direction.down);
         const bindingLabel = await driver.findElementByText("binding", SearchOptions.exact);
         expect(bindingLabel).to.exist;
-        let selector = isAndroid ? "android.widget.EditText" : "XCUIElementTypeTextField"
+        let selector = driver.isAndroid ? "android.widget.EditText" : "XCUIElementTypeTextField"
         let fields = await driver.findElementsByClassName(selector);
         let timeField;
         let dateField;
-        if(isAndroid){
+        if(driver.isAndroid){
             timeField = fields[2];
             dateField = fields[1];
         } 
@@ -226,16 +223,16 @@ describe("DateTimePicker", () => {
 
     it("Should scroll to css styled DatePicker and verify picker style", async () => {
         await scrollToElement(driver, "tap to select time", Direction.down);
-        const cssPicker = await driver.findElementByText("Feb 24, 2019", SearchOptions.exact);
-        await cssPicker.click();
+        let cssPickers = await driver.findElementsByText("Feb 24, 2019", SearchOptions.exact);
+        await cssPickers[cssPickers.length - 1].click();
         await getPickerDate(driver);
         await driver.compareScreen("cssDatePicker");
         await clickOkBtn(driver);
     });
 
     it("Should scroll to css styled TimePicker and verify picker style", async () => {
-        const cssPicker = await driver.findElementByText("1:00 AM", SearchOptions.exact);
-        await cssPicker.click();
+        const cssPickers = await driver.findElementsByText("1:00 AM", SearchOptions.exact);
+        await cssPickers[cssPickers.length - 1].click();
         await getPickerTime(driver, 12);
         await driver.compareScreen("cssTimePicker");
         await clickOkBtn(driver);
@@ -251,6 +248,7 @@ describe("DateTimePicker", () => {
             month: '2-digit', 
             day: 'numeric' 
         });
+        console.log(dateString);
         const dateField = await driver.findElementByText(dateString);
         expect(dateString).to.exist;
     })
