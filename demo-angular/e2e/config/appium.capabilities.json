@@ -110,7 +110,7 @@
         "platformVersion": "/12*/",
         "deviceName": "iPhone X",
         "appium-version": "1.9.1",
-        "app": "/Users/dtodorov/SSD/nativescript-datetimepicker/demo-angular/platforms/ios/build/Debug-iphonesimulator/demoangular.app",
+        "app": "",
         "noReset": true,
         "fullReset": false,
         "density": 3,
