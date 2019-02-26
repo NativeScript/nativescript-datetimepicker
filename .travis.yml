@@ -176,7 +176,7 @@ matrix:
       node_js: "8"
       script:
         - npm i -g appium
-        - cd demo-ng && npm i
+        - cd demo-angular && npm i
         - travis_wait travis_retry npm run e2e -- --runType sim.iPhoneX --sauceLab --appPath $IOS_PACKAGE_NG
 
 android:
