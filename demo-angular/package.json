@@ -13,7 +13,9 @@
     "repository": "https://github.com/NativeScript/nativescript-datetimepicker",
     "scripts": {
         "ci.tslint": "npm i && tslint --config '../tslint.json' 'src/**/*.ts'",
-        "build.plugin": "cd ../src && npm run build"
+        "build.plugin": "cd ../src && npm run build",
+        "e2e": "node ./node_modules/nativescript-dev-appium/check-dev-deps.js &&  tsc -p e2e  &&  mocha --opts ./e2e/config/mocha.opts ",
+        "e2e-watch": "tsc -p e2e --watch"
     },
     "dependencies": {
         "@angular/animations": "~7.2.0",
@@ -50,8 +52,4 @@
         "tslint": "~5.11.0"
     },
     "readme": "NativeScript DateTimePicker Demo NG"
-    "scripts": {
-        "e2e": "node ./node_modules/nativescript-dev-appium/check-dev-deps.js &&  tsc -p e2e  &&  mocha --opts ./e2e/config/mocha.opts ",
-        "e2e-watch": "tsc -p e2e --watch"
-    }
 }
