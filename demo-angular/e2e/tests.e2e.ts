@@ -8,6 +8,21 @@ const addContext = require('mochawesome/addContext');
 const rimraf = require('rimraf');
 const isSauceRun = isSauceLab;
 
+const deMonths = {
+    "Jan":"01",
+    "Feb":"02",
+    "Mär": "03",
+    "Apr": "04",
+    "Mai":"05",
+    "Jun":"06",
+    "Jul":"07",
+    "Aug":"08",
+    "Sep":"09",
+    "Okt":"10",
+    "Nov":"11", 
+    "Dez":"12"
+}
+
 describe("DateTimePicker", () => {
     const defaultWaitTime = 5000;
     let driver: AppiumDriver;
@@ -150,11 +165,13 @@ describe("DateTimePicker", () => {
         expect(rejectBtn).to.exist;
         expect(title).to.exist;
         await acceptBtn.click();
-        const dateString = new Date(date).toLocaleDateString('de-DE', {
-            year: 'numeric', 
-            month: '2-digit', 
-            day: 'numeric' 
-        });
+        let day = date.substring(0, date.indexOf("."));
+        let month = date.substring(date.indexOf(" ") + 1, date.indexOf(","));
+        month = month.substring(0, 3);
+        let monthString = deMonths[month];
+        let year = date.substring(date.lastIndexOf(" ") + 1, date.length);
+        const dateString = day + "." + monthString + "." + year;
+        console.log(dateString);
         const dateField = await driver.findElementByText(dateString);
         expect(dateString).to.exist;
     });
@@ -243,11 +260,19 @@ describe("DateTimePicker", () => {
         await dateButton.click();
         const date = await getPickerDate(driver);
         await clickOkBtn(driver);
-        const dateString = new Date(date).toLocaleDateString('de-DE', {
-            year: 'numeric', 
-            month: '2-digit', 
-            day: 'numeric' 
-        });
+        const pickerDate = new Date(date);
+        let day = pickerDate.getDate();
+        let dayString = day.toString();
+        if(day < 10){
+            dayString = "0" + day.toString();
+        }
+        let month = pickerDate.getMonth() + 1;
+        let monthString = month.toString();
+        if(month < 10){
+            monthString = "0" + month.toString();
+        }
+        let year = pickerDate.getFullYear();
+        const dateString = dayString + "." + monthString+ "." + year;
         console.log(dateString);
         const dateField = await driver.findElementByText(dateString);
         expect(dateString).to.exist;
