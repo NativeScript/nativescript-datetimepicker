@@ -165,7 +165,8 @@ describe("DateTimePicker", () => {
         expect(rejectBtn).to.exist;
         expect(title).to.exist;
         await acceptBtn.click();
-        let day = date.substring(0, date.indexOf("."));
+        let index = driver.isAndroid ? " " : "."
+        let day = date.substring(0, date.indexOf(index));
         let month = date.substring(date.indexOf(" ") + 1, date.indexOf(","));
         month = month.substring(0, 3);
         let monthString = deMonths[month];

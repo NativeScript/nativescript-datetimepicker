@@ -107,7 +107,7 @@
     },
     "sim.iPhoneX": {
         "platformName": "iOS",
-        "platformVersion": "12.0",
+        "platformVersion": "/12.*/",
         "deviceName": "iPhone X",
         "appium-version": "1.9.1",
         "app": "",
