@@ -167,6 +167,10 @@ describe("DateTimePicker", () => {
         await acceptBtn.click();
         let index = driver.isAndroid ? " " : "."
         let day = date.substring(0, date.indexOf(index));
+        let dayNum = parseInt(day);
+        if(!driver.isAndroid && dayNum < 10){
+            day = "0" + day;
+        }
         let month = date.substring(date.indexOf(" ") + 1, date.indexOf(","));
         month = month.substring(0, 3);
         let monthString = deMonths[month];
