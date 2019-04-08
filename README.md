@@ -54,7 +54,7 @@ import { NativeScriptDateTimePickerModule } from "nativescript-datetimepicker/an
     ],
     ...
  ```
- Then you will be able to decrare the fields in the html of your component:
+ Then you will be able to declare the fields in the html of your component:
 ```html
 <DatePickerField hint="select date"></DatePickerField>
 <TimePickerField hint="select time"></TimePickerField>
