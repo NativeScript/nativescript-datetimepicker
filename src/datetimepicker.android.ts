@@ -15,6 +15,19 @@ interface DialogDismissListener {
 
 let DialogClickListener: DialogClickListener;
 let DialogDismissListener: DialogDismissListener;
+let AppCompatNamespace: any;
+declare let androidx: any;
+
+function initializeAppCompatNamespace(): void {
+    if (AppCompatNamespace) {
+        return;
+    }
+    if (androidx && androidx.appcompat) {
+        AppCompatNamespace = androidx.appcompat;
+    } else {
+        AppCompatNamespace = (<any>android.support).v7;
+    }
+}
 
 function initializeDialogClickListener(): void {
     if (DialogClickListener) {
@@ -155,6 +168,7 @@ export class DateTimePicker extends DateTimePickerBase {
     static _createNativeDialog(nativePicker: android.view.View, options: PickerOptions, value: Date, callback: Function): android.app.AlertDialog.Builder {
         initializeDialogClickListener();
         initializeDialogDismissListener();
+        initializeAppCompatNamespace();
         DateTimePicker._initializeTextResources(options.context);
         const context = options.context;
         let dateTime: Date;
@@ -271,7 +285,7 @@ export class DateTimePicker extends DateTimePickerBase {
                 child.setTextColor(color.android);
             }
         }
-        const filter = android.support.v7.widget.AppCompatDrawableManager.getPorterDuffColorFilter(
+        const filter = AppCompatNamespace.widget.AppCompatDrawableManager.getPorterDuffColorFilter(
             color.android, android.graphics.PorterDuff.Mode.SRC_IN);
         selectionDividerDrawable.setColorFilter(filter);
         numberPicker.invalidate();
