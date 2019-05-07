@@ -1,7 +1,8 @@
 import { Color } from "tns-core-modules/color";
 import { LocalizationUtils } from "./utils/localization-utils";
+import { getDateNow, getDateToday } from "./utils/date-utils";
 import {
-    DateTimePickerBase, DateTimePickerStyleBase, getDateNow, getDateToday,
+    DateTimePickerBase, DateTimePickerStyleBase,
     DatePickerOptions, TimePickerOptions, PickerOptions
 } from "./datetimepicker.common";
 
@@ -16,7 +17,7 @@ interface DialogDismissListener {
 let DialogClickListener: DialogClickListener;
 let DialogDismissListener: DialogDismissListener;
 let AppCompatNamespace: any;
-declare let androidx: any;
+export declare let androidx: any;
 
 function initializeAppCompatNamespace(): void {
     if (AppCompatNamespace) {

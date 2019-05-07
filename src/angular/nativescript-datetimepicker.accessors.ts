@@ -3,6 +3,7 @@ import { NG_VALUE_ACCESSOR } from "@angular/forms";
 import { BaseValueAccessor } from "nativescript-angular/forms/value-accessors";
 import { DatePickerField } from "../ui/date-picker-field";
 import { TimePickerField } from "../ui/time-picker-field";
+import { DateTimePickerFields } from "../ui/date-time-picker-fields";
 
 const DATE_PICKER_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
@@ -13,6 +14,12 @@ const DATE_PICKER_VALUE_ACCESSOR = {
 const TIME_PICKER_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => TimePickerValueAccessor),
+    multi: true,
+};
+
+const DATE_TIME_PICKERS_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => DateTimePickersValueAccessor),
     multi: true,
 };
 
@@ -73,5 +80,35 @@ export class TimePickerValueAccessor extends BaseValueAccessor<TimePickerField> 
     writeValue(value: any): void {
         const normalized = super.normalizeValue(value);
         this.view.time = normalized;
+    }
+}
+
+/**
+ * The accessor for setting a date and listening to changes that is used by the
+ * {@link NgModel} directives.
+ *
+ *  ### Example
+ *  ```
+ *  <DateTimePickerFields [(ngModel)]="model.test">
+ *  ```
+ */
+@Directive({
+    selector: "DateTimePickerFields[ngModel],DateTimePickerFields[formControlName],DateTimePickerFields[formControl]," +
+        "datetimepickerfields[ngModel],datetimepickerfields[formControlName],datetimepickerfields[formControl]," +
+        "dateTimePickerFields[ngModel],dateTimePickerFields[formControlName],dateTimePickerFields[formControl]," +
+        "date-time-picker-fields[ngModel],date-time-picker-fields[formControlName],date-time-picker-fields[formControl]",
+    providers: [DATE_TIME_PICKERS_VALUE_ACCESSOR],
+    host: {
+        "(dateChange)": "onChange($event.value)",
+    },
+})
+export class DateTimePickersValueAccessor extends BaseValueAccessor<DateTimePickerFields> {
+    constructor(elementRef: ElementRef) {
+        super(elementRef.nativeElement);
+    }
+
+    writeValue(value: any): void {
+        const normalized = super.normalizeValue(value);
+        this.view.date = normalized;
     }
 }
