@@ -104,7 +104,7 @@ export class DateTimePickerFields extends GridLayout {
 
     /**
      * Gets or sets a value that indicates whether the time should be assigned a value as soon as date is picked.
-     * 
+     *
      * @default false
      */
     autoPickTime: boolean;
@@ -112,7 +112,7 @@ export class DateTimePickerFields extends GridLayout {
     /**
      * Gets or sets a value that indicates whether the date and time components should be on the same row or not.
      * Default value is horizontal, meaning that the two fields will be on the same row.
-     * 
+     *
      * @default horizontal
      */
     orientation: Orientation;
