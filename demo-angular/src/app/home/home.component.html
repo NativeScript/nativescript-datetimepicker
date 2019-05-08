@@ -159,11 +159,9 @@
 
         <Label text="Custom Buttons" id="custom" class="header" (tap)="onHeaderTap($event)" [opacity]="customOpacity"></Label>
         <StackLayout [visibility]="customVisibility">
-            <Label text="pick date" class="content"></Label>
+            <TextField opacity="0"></TextField>
             <Button [text]="dateText" (tap)="onPickDateTap($event)"></Button>
-            <Label text="pick time" class="content"></Label>
             <Button [text]="timeText" (tap)="onPickTimeTap($event)"></Button>
-            <Label text="pick date and time" class="content"></Label>
             <Button [text]="dateTimeText" (tap)="onPickDateTimeTap($event)"></Button>
         </StackLayout>
     </StackLayout>

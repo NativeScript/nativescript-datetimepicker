@@ -164,11 +164,8 @@
 
             <Label text="Custom Buttons" id="custom" class="header" tap="{{ onHeaderTap }}" opacity="{{ customOpacity }}"/>
             <StackLayout visibility="{{ customVisibility }}">
-                <Label text="pick date" class="content"/>
                 <Button text="{{ dateText }}" tap="{{ onPickDateTap }}"/>
-                <Label text="pick time" class="content"/>
                 <Button text="{{ timeText }}" tap="{{ onPickTimeTap }}"/>
-                <Label text="pick date and time" class="content"/>
                 <Button text="{{ dateTimeText }}" tap="{{ onPickDateTimeTap }}"/>
             </StackLayout>
         </StackLayout>

@@ -161,11 +161,8 @@
 
                 <Label text="Custom Buttons" id="custom" class="header" @tap="onHeaderTap" :opacity="customOpacity"></Label>
                 <StackLayout :visibility="customVisibility">
-                    <Label text="pick date" class="content"></Label>
                     <Button :text="dateText" @tap="onPickDateTap"></Button>
-                    <Label text="pick time" class="content"></Label>
                     <Button :text="timeText" @tap="onPickTimeTap"></Button>
-                    <Label text="pick date and time" class="content"></Label>
                     <Button :text="dateTimeText" @tap="onPickDateTimeTap"></Button>
                 </StackLayout>
             </StackLayout>
