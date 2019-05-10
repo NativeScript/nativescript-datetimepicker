@@ -1,5 +1,7 @@
 import { Directive } from "@angular/core";
-import { DatePickerValueAccessor, TimePickerValueAccessor } from "./nativescript-datetimepicker.accessors";
+import {
+    DatePickerValueAccessor, TimePickerValueAccessor, DateTimePickersValueAccessor
+} from "./nativescript-datetimepicker.accessors";
 
 @Directive({
     selector: "DatePickerField"
@@ -11,5 +13,10 @@ export class DatePickerFieldDirective { }
 })
 export class TimePickerFieldDirective { }
 
-export const DIRECTIVES = [DatePickerFieldDirective, TimePickerFieldDirective,
-    DatePickerValueAccessor, TimePickerValueAccessor];
+@Directive({
+    selector: "DateTimePickerFields"
+})
+export class DateTimePickerFieldsDirective { }
+
+export const DIRECTIVES = [DatePickerFieldDirective, TimePickerFieldDirective, DateTimePickerFieldsDirective,
+    DatePickerValueAccessor, TimePickerValueAccessor, DateTimePickersValueAccessor];

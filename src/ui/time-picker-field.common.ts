@@ -2,6 +2,7 @@ import { Property, CSSType } from "tns-core-modules/ui/core/view";
 import { DateTimePicker, DateTimePickerStyle } from "../datetimepicker";
 import { TimePickerField as TimePickerFieldDefinition } from "./time-picker-field";
 import { LocalizationUtils } from "../utils/localization-utils";
+import { getDateNow } from "../utils/date-utils";
 import { PickerFieldBase } from "./picker-field-base";
 
 @CSSType("TimePickerField")
@@ -27,6 +28,7 @@ export class TimePickerFieldBase extends PickerFieldBase implements TimePickerFi
 
     public static pickerDefaultTimeProperty = new Property<TimePickerFieldBase, Date>({
         name: "pickerDefaultTime",
+        defaultValue: getDateNow(),
         equalityComparer: timeComparer,
         valueConverter: timeValueConverter
     });

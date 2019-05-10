@@ -1,5 +1,6 @@
 import { DatePickerField } from "../ui/date-picker-field";
 import { TimePickerField } from "../ui/time-picker-field";
+import { DateTimePickerFields } from "../ui/date-time-picker-fields";
 
 const DateTimePicker = {
     install(Vue) {
@@ -21,6 +22,17 @@ const DateTimePicker = {
                 model: {
                     prop: 'time',
                     event: 'timeChange'
+                }
+            }
+        );
+
+        Vue.registerElement(
+            'DateTimePickerFields',
+            () => DateTimePickerFields,
+            {
+                model: {
+                    prop: 'date',
+                    event: 'dateChange'
                 }
             }
         );

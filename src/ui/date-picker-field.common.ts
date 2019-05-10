@@ -2,6 +2,7 @@ import { Property, CSSType } from "tns-core-modules/ui/core/view";
 import { DateTimePicker, DateTimePickerStyle } from "../datetimepicker";
 import { DatePickerField as DatePickerFieldDefinition } from "./date-picker-field";
 import { LocalizationUtils } from "../utils/localization-utils";
+import { getDateToday } from "../utils/date-utils";
 import { PickerFieldBase } from "./picker-field-base";
 
 @CSSType("DatePickerField")
@@ -41,6 +42,7 @@ export class DatePickerFieldBase extends PickerFieldBase implements DatePickerFi
 
     public static pickerDefaultDateProperty = new Property<DatePickerFieldBase, Date>({
         name: "pickerDefaultDate",
+        defaultValue: getDateToday(),
         equalityComparer: dateComparer,
         valueConverter: dateValueConverter,
     });

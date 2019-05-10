@@ -1,10 +1,11 @@
 import { Color } from "tns-core-modules/color";
 import { View, ios as iosView } from "tns-core-modules/ui/core/view";
 import {
-    DateTimePickerBase, DateTimePickerStyleBase, getDateNow, getDateToday, getCurrentPage,
+    DateTimePickerBase, DateTimePickerStyleBase, getCurrentPage,
     DatePickerOptions, TimePickerOptions, PickerOptions
 } from "./datetimepicker.common";
 import { LocalizationUtils } from "./utils/localization-utils";
+import { getDateNow, getDateToday } from "./utils/date-utils";
 
 export class DateTimePickerStyle extends DateTimePickerStyleBase {
 }

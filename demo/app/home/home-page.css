@@ -6,6 +6,15 @@
     color: #303F9F;
 }
 
+.header {
+    font-size: 16;
+    margin-top: 12;
+    margin-bottom: 6;
+    color: white;
+    background-color: #2196F3;
+    text-align: center;
+}
+
 label {
     padding: 6 4;
 }
