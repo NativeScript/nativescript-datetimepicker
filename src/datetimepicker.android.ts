@@ -17,14 +17,14 @@ interface DialogDismissListener {
 let DialogClickListener: DialogClickListener;
 let DialogDismissListener: DialogDismissListener;
 let AppCompatNamespace: any;
-export declare let androidx: any;
+declare let global: any;
 
 function initializeAppCompatNamespace(): void {
     if (AppCompatNamespace) {
         return;
     }
-    if (androidx && androidx.appcompat) {
-        AppCompatNamespace = androidx.appcompat;
+    if (global.androidx && global.androidx.appcompat) {
+        AppCompatNamespace = global.androidx.appcompat;
     } else {
         AppCompatNamespace = (<any>android.support).v7;
     }
