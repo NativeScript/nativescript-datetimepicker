@@ -74,7 +74,7 @@
         "@angular/router": "~7.2.0",
         "rxjs": "~6.4.0",
         "zone.js": "~0.8.26",
-        "nativescript-vue": "~2.0.0"
+        "nativescript-vue": "~2.2.0"
     },
     "dependencies": {},
     "bootstrapper": "nativescript-plugin-seed"
