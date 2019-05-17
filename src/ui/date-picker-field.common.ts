@@ -1,8 +1,8 @@
-import { Property, CSSType } from "tns-core-modules/ui/core/view";
+import { Property, CSSType, EventData } from "tns-core-modules/ui/core/view";
 import { DateTimePicker, DateTimePickerStyle } from "../datetimepicker";
 import { DatePickerField as DatePickerFieldDefinition } from "./date-picker-field";
 import { LocalizationUtils } from "../utils/localization-utils";
-import { getDateToday } from "../utils/date-utils";
+import { getDateToday, dateComparer } from "../utils/date-utils";
 import { PickerFieldBase } from "./picker-field-base";
 
 @CSSType("DatePickerField")
@@ -12,6 +12,8 @@ export class DatePickerFieldBase extends PickerFieldBase implements DatePickerFi
     public date: Date;
     public dateFormat: string;
     public pickerDefaultDate: Date;
+    public static datePickerOpenedEvent = "datePickerOpened";
+    public static datePickerClosedEvent = "datePickerClosed";
 
     private _nativeLocale: any;
     private _nativeDateFormatter: any;
@@ -63,10 +65,20 @@ export class DatePickerFieldBase extends PickerFieldBase implements DatePickerFi
             if (result) {
                 this.date = result;
             }
+            let args = <EventData>{
+                eventName: DatePickerFieldBase.datePickerClosedEvent,
+                object: this
+            };
+            this.notify(args);
         })
         .catch((err) => {
             console.log('DatePickerField Error: ' + err);
         });
+        let args = <EventData>{
+            eventName: DatePickerFieldBase.datePickerOpenedEvent,
+            object: this
+        };
+        this.notify(args);
     }
 
     public updateText() {
@@ -110,10 +122,6 @@ export class DatePickerFieldBase extends PickerFieldBase implements DatePickerFi
         this._initRegionalSettings();
         this.updateText();
     }
-}
-
-export function dateComparer(x: Date, y: Date): boolean {
-    return x <= y && x >= y;
 }
 
 export function dateValueConverter(v: any): Date {
