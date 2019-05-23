@@ -1,8 +1,8 @@
-import { Property, CSSType } from "tns-core-modules/ui/core/view";
+import { Property, CSSType, EventData } from "tns-core-modules/ui/core/view";
 import { DateTimePicker, DateTimePickerStyle } from "../datetimepicker";
 import { TimePickerField as TimePickerFieldDefinition } from "./time-picker-field";
 import { LocalizationUtils } from "../utils/localization-utils";
-import { getDateNow } from "../utils/date-utils";
+import { getDateNow, dateComparer } from "../utils/date-utils";
 import { PickerFieldBase } from "./picker-field-base";
 
 @CSSType("TimePickerField")
@@ -10,13 +10,15 @@ export class TimePickerFieldBase extends PickerFieldBase implements TimePickerFi
     public time: Date;
     public timeFormat: string;
     public pickerDefaultTime: Date;
+    public static timePickerOpenedEvent = "timePickerOpened";
+    public static timePickerClosedEvent = "timePickerClosed";
 
     private _nativeLocale: any;
     private _nativeTimeFormatter: any;
 
     public static timeProperty = new Property<TimePickerFieldBase, Date>({
         name: "time",
-        equalityComparer: timeComparer,
+        equalityComparer: dateComparer,
         valueConverter: timeValueConverter,
         valueChanged: TimePickerFieldBase.timePropertyChanged
     });
@@ -29,7 +31,7 @@ export class TimePickerFieldBase extends PickerFieldBase implements TimePickerFi
     public static pickerDefaultTimeProperty = new Property<TimePickerFieldBase, Date>({
         name: "pickerDefaultTime",
         defaultValue: getDateNow(),
-        equalityComparer: timeComparer,
+        equalityComparer: dateComparer,
         valueConverter: timeValueConverter
     });
 
@@ -48,10 +50,20 @@ export class TimePickerFieldBase extends PickerFieldBase implements TimePickerFi
                 if (result) {
                     this.time = result;
                 }
+                let args = <EventData>{
+                    eventName: TimePickerFieldBase.timePickerClosedEvent,
+                    object: this
+                };
+                this.notify(args);
             })
             .catch((err) => {
                 console.log('TimePickerField Error: ' + err);
             });
+        let args = <EventData>{
+            eventName: TimePickerFieldBase.timePickerOpenedEvent,
+            object: this
+        };
+        this.notify(args);
     }
 
     public updateText() {
@@ -99,10 +111,6 @@ export class TimePickerFieldBase extends PickerFieldBase implements TimePickerFi
     private is24Hours(formatter): boolean {
         return LocalizationUtils.is24Hours(formatter);
     }
-}
-
-export function timeComparer(x: Date, y: Date): boolean {
-    return x <= y && x >= y;
 }
 
 // Creates a date for today with the time represented in the timeString in ISO 8601 formats

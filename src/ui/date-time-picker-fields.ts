@@ -1,11 +1,11 @@
-import { Property, CSSType } from "tns-core-modules/ui/core/view";
+import { Property, CSSType, EventData } from "tns-core-modules/ui/core/view";
 import { PropertyChangeData } from "tns-core-modules/data/observable";
 import { DateTimePickerFields as DateTimePickerFieldsDefinition } from "./date-time-picker-fields";
 import { GridLayout, ItemSpec } from "tns-core-modules/ui/layouts/grid-layout";
 import { Orientation } from "tns-core-modules/ui/layouts/stack-layout";
 import { DatePickerField } from "./date-picker-field";
 import { TimePickerField } from "./time-picker-field";
-import { getDateNow, clearTime } from "../utils/date-utils";
+import { getDateNow, clearTime, dateComparer } from "../utils/date-utils";
 
 @CSSType("DateTimePickerFields")
 export class DateTimePickerFields extends GridLayout implements DateTimePickerFieldsDefinition {
@@ -241,6 +241,17 @@ export class DateTimePickerFields extends GridLayout implements DateTimePickerFi
         super.disposeNativeView();
     }
 
+    public addEventListener(eventNames: string, callback: (data: EventData) => void, thisArg?: Object) {
+        super.addEventListener(eventNames, callback, thisArg);
+        this.dateField.addEventListener(eventNames, callback, thisArg);
+        this.timeField.addEventListener(eventNames, callback, thisArg);
+    }
+    public removeEventListener(eventNames: string, callback?: any, thisArg?: Object) {
+        super.removeEventListener(eventNames, callback, thisArg);
+        this.dateField.removeEventListener(eventNames, callback, thisArg);
+        this.timeField.removeEventListener(eventNames, callback, thisArg);
+    }
+
     private _updateHandlers(subscribe: boolean) {
         if (subscribe) {
             this._dateChangeHandler = this._dateChangeHandler || ((args: PropertyChangeData) => {
@@ -297,10 +308,6 @@ export class DateTimePickerFields extends GridLayout implements DateTimePickerFi
             GridLayout.setColumnSpan(field.timeField, 2);
         }
     }
-}
-
-export function dateComparer(x: Date, y: Date): boolean {
-    return x <= y && x >= y;
 }
 
 export function dateValueConverter(v: any): Date {

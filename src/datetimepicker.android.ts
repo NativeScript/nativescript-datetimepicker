@@ -6,16 +6,7 @@ import {
     DatePickerOptions, TimePickerOptions, PickerOptions
 } from "./datetimepicker.common";
 
-interface DialogClickListener {
-    new(datePicker: any, dateTime: Date, callback: Function): android.content.DialogInterface.OnClickListener;
-}
-
-interface DialogDismissListener {
-    new(callback: Function): android.content.DialogInterface.OnDismissListener;
-}
-
-let DialogClickListener: DialogClickListener;
-let DialogDismissListener: DialogDismissListener;
+let DialogListener: any;
 let AppCompatNamespace: any;
 declare let global: any;
 
@@ -30,13 +21,14 @@ function initializeAppCompatNamespace(): void {
     }
 }
 
-function initializeDialogClickListener(): void {
-    if (DialogClickListener) {
+function initializeDialogListener(): void {
+    if (DialogListener) {
         return;
     }
 
-    @Interfaces([android.content.DialogInterface.OnClickListener])
-    class DialogClickListenerImpl extends java.lang.Object implements android.content.DialogInterface.OnClickListener {
+    @Interfaces([android.content.DialogInterface.OnClickListener, android.content.DialogInterface.OnDismissListener])
+    class DialogListenerImpl extends java.lang.Object implements android.content.DialogInterface.OnClickListener, android.content.DialogInterface.OnDismissListener {
+        private _isClicked = false;
         constructor(public nativePicker: any, public dateTime: Date, public callback: Function) {
             super();
             return global.__native(this);
@@ -46,6 +38,7 @@ function initializeDialogClickListener(): void {
             const callback = this.callback;
             const dateTime = this.dateTime;
             const nativePicker = this.nativePicker;
+            this._isClicked = true;
             switch (which) {
                 case android.content.DialogInterface.BUTTON_POSITIVE: {
                     if (nativePicker instanceof android.widget.DatePicker) {
@@ -63,30 +56,19 @@ function initializeDialogClickListener(): void {
             }
             callback(null);
         }
-    }
-
-    DialogClickListener = DialogClickListenerImpl;
-}
-
-function initializeDialogDismissListener(): void {
-    if (DialogDismissListener) {
-        return;
-    }
-
-    @Interfaces([android.content.DialogInterface.OnDismissListener])
-    class DialogDismissListenerImpl extends java.lang.Object implements android.content.DialogInterface.OnDismissListener {
-        constructor(public callback: Function) {
-            super();
-            return global.__native(this);
-        }
 
         onDismiss(dialog: android.content.DialogInterface) {
+            if (this._isClicked) {
+                // The Picker is dismissed due to a button click,
+                // so the callback is already called.
+                return;
+            }
             const callback = this.callback;
             callback(null);
         }
     }
 
-    DialogDismissListener = DialogDismissListenerImpl;
+    DialogListener = DialogListenerImpl;
 }
 
 export class DateTimePickerStyle extends DateTimePickerStyleBase {
@@ -167,8 +149,7 @@ export class DateTimePicker extends DateTimePickerBase {
     }
 
     static _createNativeDialog(nativePicker: android.view.View, options: PickerOptions, value: Date, callback: Function): android.app.AlertDialog.Builder {
-        initializeDialogClickListener();
-        initializeDialogDismissListener();
+        initializeDialogListener();
         initializeAppCompatNamespace();
         DateTimePicker._initializeTextResources(options.context);
         const context = options.context;
@@ -179,16 +160,15 @@ export class DateTimePicker extends DateTimePickerBase {
             dateTime = (nativePicker instanceof android.widget.DatePicker) ? getDateToday() : getDateNow();
         }
         const alertDialog = new android.app.AlertDialog.Builder(context);
-        const dialogClickListener = new DialogClickListener(nativePicker, dateTime, callback);
-        const dialogDismissListener = new DialogDismissListener(callback);
+        const dialogListener = new DialogListener(nativePicker, dateTime, callback);
         if (options.title) {
             alertDialog.setTitle(options.title);
         }
-        alertDialog.setOnDismissListener(dialogDismissListener);
+        alertDialog.setOnDismissListener(dialogListener);
         const cancelButtonText = options.cancelButtonText ? options.cancelButtonText : this._defaultCancelText;
         const okButtonText = options.okButtonText ? options.okButtonText : this._defaultOkText;
-        alertDialog.setNegativeButton(cancelButtonText, dialogClickListener);
-        alertDialog.setPositiveButton(okButtonText, dialogClickListener);
+        alertDialog.setNegativeButton(cancelButtonText, dialogListener);
+        alertDialog.setPositiveButton(okButtonText, dialogListener);
         alertDialog.setView(nativePicker);
         return alertDialog;
     }
