@@ -28,7 +28,7 @@ matrix:
       os: linux
       node_js: "8"
       script: 
-        - cd src && npm run ci.tslint
+        - cd ../src && npm run ci.tslint
         - cd ../demo && npm run ci.tslint
         - cd ../demo-angular && npm run ci.tslint
 
