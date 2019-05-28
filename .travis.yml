@@ -15,9 +15,6 @@ env:
     - IOS_PACKAGE_FOLDER_VUE=$TRAVIS_BUILD_DIR/demo-vue/outputs
     - IOS_SAUCE_STORAGE="https://saucelabs.com/rest/v1/storage/$SAUCE_USER"
 
-git:
-  depth: 1
-
 branches:
   only: 
     - next
