@@ -39,10 +39,13 @@ const DATE_TIME_PICKERS_VALUE_ACCESSOR = {
         "date-picker-field[ngModel],date-picker-field[formControlName],date-picker-field[formControl]",
     providers: [DATE_PICKER_VALUE_ACCESSOR],
     host: {
-        "(dateChange)": "onChange($event.value)",
+        "(dateChange)": "handleDateChange($event)",
+        "(datePickerOpened)": "handleDatePickerOpened($event)",
+        "(datePickerClosed)": "handleDatePickerClosed($event)"
     },
 })
 export class DatePickerValueAccessor extends BaseValueAccessor<DatePickerField> {
+    private _hasBeenOpened = false;
     constructor(elementRef: ElementRef) {
         super(elementRef.nativeElement);
     }
@@ -50,6 +53,20 @@ export class DatePickerValueAccessor extends BaseValueAccessor<DatePickerField> 
     writeValue(value: any): void {
         const normalized = super.normalizeValue(value);
         this.view.date = normalized;
+    }
+
+    handleDateChange(args: any) {
+        if (this._hasBeenOpened) {
+            this.onChange(args.value);
+        }
+    }
+
+    handleDatePickerOpened(args: any) {
+        this._hasBeenOpened = true;
+    }
+
+    handleDatePickerClosed(args: any) {
+        this.onTouched();
     }
 }
 
@@ -69,10 +86,13 @@ export class DatePickerValueAccessor extends BaseValueAccessor<DatePickerField> 
         "time-picker-field[ngModel],time-picker-field[formControlName],time-picker-field[formControl]",
     providers: [TIME_PICKER_VALUE_ACCESSOR],
     host: {
-        "(timeChange)": "onChange($event.value)",
+        "(timeChange)": "handleTimeChange($event)",
+        "(timePickerOpened)": "handleTimePickerOpened($event)",
+        "(timePickerClosed)": "handleTimePickerClosed($event)"
     },
 })
 export class TimePickerValueAccessor extends BaseValueAccessor<TimePickerField> {
+    private _hasBeenOpened = false;
     constructor(elementRef: ElementRef) {
         super(elementRef.nativeElement);
     }
@@ -80,6 +100,20 @@ export class TimePickerValueAccessor extends BaseValueAccessor<TimePickerField> 
     writeValue(value: any): void {
         const normalized = super.normalizeValue(value);
         this.view.time = normalized;
+    }
+
+    handleTimeChange(args: any) {
+        if (this._hasBeenOpened) {
+            this.onChange(args.value);
+        }
+    }
+
+    handleTimePickerOpened(args: any) {
+        this._hasBeenOpened = true;
+    }
+
+    handleTimePickerClosed(args: any) {
+        this.onTouched();
     }
 }
 
@@ -99,10 +133,15 @@ export class TimePickerValueAccessor extends BaseValueAccessor<TimePickerField> 
         "date-time-picker-fields[ngModel],date-time-picker-fields[formControlName],date-time-picker-fields[formControl]",
     providers: [DATE_TIME_PICKERS_VALUE_ACCESSOR],
     host: {
-        "(dateChange)": "onChange($event.value)",
+        "(dateChange)": "handleDateChange($event)",
+        "(datePickerOpened)": "handlePickerOpened($event)",
+        "(datePickerClosed)": "handlePickerClosed($event)",
+        "(timePickerOpened)": "handlePickerOpened($event)",
+        "(timePickerClosed)": "handlePickerClosed($event)"
     },
 })
 export class DateTimePickersValueAccessor extends BaseValueAccessor<DateTimePickerFields> {
+    private _hasBeenOpened = false;
     constructor(elementRef: ElementRef) {
         super(elementRef.nativeElement);
     }
@@ -110,5 +149,19 @@ export class DateTimePickersValueAccessor extends BaseValueAccessor<DateTimePick
     writeValue(value: any): void {
         const normalized = super.normalizeValue(value);
         this.view.date = normalized;
+    }
+
+    handleDateChange(args: any) {
+        if (this._hasBeenOpened) {
+            this.onChange(args.value);
+        }
+    }
+
+    handlePickerOpened(args: any) {
+        this._hasBeenOpened = true;
+    }
+
+    handlePickerClosed(args: any) {
+        this.onTouched();
     }
 }

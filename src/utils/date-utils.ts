@@ -22,3 +22,13 @@ export function clearTime(date: Date): Date {
     date.setMilliseconds(0);
     return date;
 }
+
+export function dateComparer(x: Date, y: Date): boolean {
+    if (x === undefined && y === undefined) {
+        return true;
+    }
+    if (x === null && y === null) {
+        return true;
+    }
+    return x <= y && x >= y;
+}
