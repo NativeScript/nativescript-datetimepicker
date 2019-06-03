@@ -13,6 +13,7 @@ export class DateTimePickerStyle extends DateTimePickerStyleBase {
 export class DateTimePicker extends DateTimePickerBase {
     public static PICKER_DEFAULT_MESSAGE_HEIGHT = 192;
     public static PICKER_WIDTH_INSETS = 16;
+    public static PICKER_WIDTH_PAD = 304;
     public static PICKER_DEFAULT_TITLE_OFFSET = 26.5;
     public static PICKER_DEFAULT_TITLE_HEIGHT = 16;
     public static PICKER_DEFAULT_MESSAGE = "\n\n\n\n\n\n\n\n\n";
@@ -72,7 +73,8 @@ export class DateTimePicker extends DateTimePickerBase {
         const alertController = UIAlertController.alertControllerWithTitleMessagePreferredStyle(
             alertTitle, DateTimePicker.PICKER_DEFAULT_MESSAGE, UIAlertControllerStyle.ActionSheet);
         const alertSize = Math.min(alertController.view.frame.size.width, alertController.view.frame.size.height);
-        const pickerViewWidth = alertSize - DateTimePicker.PICKER_WIDTH_INSETS;
+        const pickerViewWidth = UIDevice.currentDevice.userInterfaceIdiom === UIUserInterfaceIdiom.Pad ?
+            DateTimePicker.PICKER_WIDTH_PAD : alertSize - DateTimePicker.PICKER_WIDTH_INSETS;
 
         let pickerContainerFrameTop = DateTimePicker.PICKER_DEFAULT_TITLE_OFFSET;
         if (options.title) {
