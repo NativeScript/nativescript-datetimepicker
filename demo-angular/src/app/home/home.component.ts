@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     public customVisibility: string;
     private _expandedId: string;
 
-    @ViewChild("scrollView") scrollView: ElementRef;
+    @ViewChild("scrollView", { static: false }) scrollView: ElementRef;
 
     constructor() {
         // Use the component constructor to inject providers.
