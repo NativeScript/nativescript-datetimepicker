@@ -1,55 +1,55 @@
 {
-    "nativescript": {
-        "id": "org.nativescript.datetimepicker.demong",
-        "tns-android": {
-            "version": "5.3.0"
-        },
-        "tns-ios": {
-            "version": "5.3.0"
-        }
+  "nativescript": {
+    "id": "org.nativescript.datetimepicker.demong",
+    "tns-android": {
+      "version": "5.4.0"
     },
-    "description": "NativeScript DateTimePicker Demo NG",
-    "license": "SEE LICENSE IN LICENSE FILE",
-    "repository": "https://github.com/NativeScript/nativescript-datetimepicker",
-    "scripts": {
-        "ci.tslint": "npm i && tslint --config '../tslint.json' 'src/**/*.ts'",
-        "build.plugin": "cd ../src && npm run build",
-        "e2e": "node ./node_modules/nativescript-dev-appium/check-dev-deps.js &&  tsc -p e2e  &&  mocha --opts ./e2e/config/mocha.opts ",
-        "e2e-watch": "tsc -p e2e --watch"
-    },
-    "dependencies": {
-        "@angular/animations": "~7.2.0",
-        "@angular/common": "~7.2.0",
-        "@angular/compiler": "~7.2.0",
-        "@angular/core": "~7.2.0",
-        "@angular/forms": "~7.2.0",
-        "@angular/http": "~7.2.0",
-        "@angular/platform-browser": "~7.2.0",
-        "@angular/platform-browser-dynamic": "~7.2.0",
-        "@angular/router": "~7.2.0",
-        "nativescript-angular": "~7.2.0",
-        "nativescript-datetimepicker": "file:../src",
-        "nativescript-theme-core": "~1.0.4",
-        "reflect-metadata": "~0.1.10",
-        "rxjs": "~6.4.0",
-        "tns-core-modules": "^5.0.0",
-        "zone.js": "~0.8.18"
-    },
-    "devDependencies": {
-        "@nativescript/schematics": "~0.5.0",
-        "nativescript-dev-typescript": "~0.9.0",
-        "nativescript-dev-webpack": "~0.21.0",
-        "@angular/compiler-cli": "~7.2.0",
-        "@ngtools/webpack": "~7.2.0",
-        "@types/chai": "~4.1.7",
-        "@types/mocha": "~5.2.5",
-        "@types/node": "~10.12.18",
-        "mocha": "~5.2.0",
-        "mocha-junit-reporter": "~1.18.0",
-        "mocha-multi": "~1.0.1",
-        "mochawesome": "~3.1.1",
-        "nativescript-dev-appium": "~5.0.0",
-        "tslint": "~5.11.0"
-    },
-    "readme": "NativeScript DateTimePicker Demo NG"
+    "tns-ios": {
+      "version": "5.4.0"
+    }
+  },
+  "description": "NativeScript DateTimePicker Demo NG",
+  "license": "SEE LICENSE IN LICENSE FILE",
+  "repository": "https://github.com/NativeScript/nativescript-datetimepicker",
+  "scripts": {
+    "ci.tslint": "npm i && tslint --config '../tslint.json' 'src/**/*.ts'",
+    "build.plugin": "cd ../src && npm run build",
+    "e2e": "node ./node_modules/nativescript-dev-appium/check-dev-deps.js &&  tsc -p e2e  &&  mocha --opts ./e2e/config/mocha.opts ",
+    "e2e-watch": "tsc -p e2e --watch"
+  },
+  "dependencies": {
+    "@angular/animations": "~8.0.0",
+    "@angular/common": "~8.0.0",
+    "@angular/compiler": "~8.0.0",
+    "@angular/core": "~8.0.0",
+    "@angular/forms": "~8.0.0",
+    "@angular/http": "8.0.0-beta.10",
+    "@angular/platform-browser": "~8.0.0",
+    "@angular/platform-browser-dynamic": "~8.0.0",
+    "@angular/router": "~8.0.0",
+    "nativescript-angular": "~8.0.0",
+    "nativescript-datetimepicker": "file:../src",
+    "nativescript-theme-core": "~1.0.4",
+    "reflect-metadata": "~0.1.10",
+    "rxjs": "^6.3.3",
+    "tns-core-modules": "^5.0.0",
+    "typescript": "~3.4.5",
+    "zone.js": "^0.8.4"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "~8.0.0",
+    "@ngtools/webpack": "~8.0.0",
+    "@types/chai": "~4.1.7",
+    "@types/mocha": "~5.2.5",
+    "@types/node": "~10.12.18",
+    "mocha": "~5.2.0",
+    "mocha-junit-reporter": "~1.18.0",
+    "mocha-multi": "~1.0.1",
+    "mochawesome": "~3.1.1",
+    "nativescript-dev-appium": "~5.2.0",
+    "nativescript-dev-typescript": "~0.10.0",
+    "nativescript-dev-webpack": "~0.24.0",
+    "tslint": "~5.11.0"
+  },
+  "readme": "NativeScript DateTimePicker Demo NG"
 }
