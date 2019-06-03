@@ -135,7 +135,7 @@ matrix:
       node_js: "10"
       script:
         - npm i -g appium
-        - cd demo-angular && npm i
+        - cd ../demo-angular && npm i
         - travis_wait travis_retry npm run e2e -- --runType android24 --sauceLab --appPath $ANDROID_PACKAGE_NG
     - os: linux
       env:
@@ -145,7 +145,7 @@ matrix:
       node_js: "10"
       script:
         - npm i -g appium
-        - cd demo-angular && npm i
+        - cd ../demo-angular && npm i
         - travis_wait travis_retry npm run e2e -- --runType sim.iPhoneX --sauceLab --appPath $IOS_PACKAGE_NG
 
 android:
