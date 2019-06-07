@@ -23,15 +23,6 @@ branches:
     - next
 matrix:
   include:
-    - stage: "lint"
-      language: node_js
-      os: linux
-      node_js: "10"
-      script: 
-        - cd ../src && npm run ci.tslint
-        - cd ../demo && npm run ci.tslint
-        - cd ../demo-angular && npm run ci.tslint
-
     - stage: "WebPack and Build"
       os: osx
       env:
