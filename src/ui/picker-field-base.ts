@@ -8,7 +8,7 @@ export abstract class PickerFieldBase extends TextField {
     public pickerOkText: string;
     public pickerCancelText: string;
 
-    private _tapHandler: (args: TouchGestureEventData) => void;
+    private _pickerFieldBaseTapHandler: (args: TouchGestureEventData) => void;
 
     constructor() {
         super();
@@ -36,11 +36,11 @@ export abstract class PickerFieldBase extends TextField {
 
     initNativeView() {
         super.initNativeView();
-        this._updateHandler(true);
+        this._updatePickerFieldBaseTapHandler(true);
     }
 
     disposeNativeView() {
-        this._updateHandler(false);
+        this._updatePickerFieldBaseTapHandler(false);
         super.disposeNativeView();
     }
 
@@ -51,18 +51,18 @@ export abstract class PickerFieldBase extends TextField {
     protected onLocaleChanged(oldValue: string, newValue: string) {
     }
 
-    private _updateHandler(subscribe: boolean) {
+    private _updatePickerFieldBaseTapHandler(subscribe: boolean) {
         if (subscribe) {
-            this._tapHandler = this._tapHandler || ((args: TouchGestureEventData) => {
-                this._onTap(args);
+            this._pickerFieldBaseTapHandler = this._pickerFieldBaseTapHandler || ((args: TouchGestureEventData) => {
+                this._onPickerFieldBaseTap(args);
             });
-            this.on(GestureTypes.tap, this._tapHandler);
+            this.on(GestureTypes.tap, this._pickerFieldBaseTapHandler);
         } else {
-            this.off(GestureTypes.tap, this._tapHandler);
+            this.off(GestureTypes.tap, this._pickerFieldBaseTapHandler);
         }
     }
 
-    private _onTap(args: TouchGestureEventData) {
+    private _onPickerFieldBaseTap(args: TouchGestureEventData) {
         this.open();
     }
 }
