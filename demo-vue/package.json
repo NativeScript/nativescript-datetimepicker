@@ -12,7 +12,7 @@
     "license": "SEE LICENSE IN LICENSE FILE",
     "repository": "https://github.com/NativeScript/nativescript-datetimepicker",
     "dependencies": {
-        "nativescript-datetimepicker": "1.1.0",
+        "nativescript-datetimepicker": "file:../src",
         "nativescript-theme-core": "~1.0.4",
         "nativescript-vue": "~2.3.0",
         "tns-core-modules": "^6.0.0"
