@@ -173,8 +173,30 @@ matrix:
       node_js: "10"
       script:
         - npm i -g appium
-        - cd demo-angular && npm i
+        - cd tests && npm i
         - travis_wait travis_retry npm run e2e -- --runType android24 --sauceLab --appPath $ANDROID_PACKAGE_NG
+    - os: linux
+      env:
+        - Android="24"
+        - Type="VanillaJS"
+      language: node_js
+      os: linux
+      node_js: "10"
+      script:
+        - npm i -g appium
+        - cd tests && npm i
+        - travis_wait travis_retry npm run e2e -- --runType android24 --sauceLab --appPath $ANDROID_PACKAGE_JS
+    - os: linux
+      env:
+        - Android="24"
+        - Type="VueJS"
+      language: node_js
+      os: linux
+      node_js: "10"
+      script:
+        - npm i -g appium
+        - cd tests && npm i
+        - travis_wait travis_retry npm run e2e -- --runType android24 --sauceLab --appPath $ANDROID_PACKAGE_VUE
     - os: linux
       env:
         - iOS="12.0"
@@ -183,8 +205,28 @@ matrix:
       node_js: "10"
       script:
         - npm i -g appium
-        - cd demo-angular && npm i
+        - cd tests && npm i
         - travis_wait travis_retry npm run e2e -- --runType sim.iPhoneX --sauceLab --appPath $IOS_PACKAGE_NG
+    - os: linux
+      env:
+        - iOS="12.0"
+        - Type="VueJS"
+      language: node_js
+      node_js: "10"
+      script:
+        - npm i -g appium
+        - cd tests && npm i
+        - travis_wait travis_retry npm run e2e -- --runType sim.iPhoneX --sauceLab --appPath $IOS_PACKAGE_VUE
+    - os: linux
+      env:
+        - iOS="12.0"
+        - Type="VanillaJS"
+      language: node_js
+      node_js: "10"
+      script:
+        - npm i -g appium
+        - cd tests && npm i
+        - travis_wait travis_retry npm run e2e -- --runType sim.iPhoneX --sauceLab --appPath $IOS_PACKAGE_JS
 
 android:
   components:
