@@ -61,7 +61,7 @@ describe("DateTimePicker", () => {
     });
 
     it("Should verify demo title", async () => {
-        const title = await driver.findElementByText("DateTimePicker Demo NG", SearchOptions.exact);
+        const title = await driver.findElementByText("DateTimePicker Demo", SearchOptions.contains);
         expect(title).to.exist;
     });
 
