@@ -244,8 +244,8 @@ describe("DateTimePicker", () => {
         let rejectBtn;
         if(driver.isAndroid){
             let buttons = await driver.findElementsByClassName("android.widget.Button");
-            acceptBtn = buttons[5];
-            rejectBtn = buttons[4];
+            acceptBtn = buttons[buttons.length - 1];
+            rejectBtn = buttons[buttons.length - 2];
         }
         else{
             acceptBtn = await driver.findElementByText("Bestätigen", SearchOptions.exact);
@@ -256,7 +256,7 @@ describe("DateTimePicker", () => {
         expect(rejectBtn).to.exist;
         expect(title).to.exist;
         await acceptBtn.click();
-        const dateField = await driver.findElementByText(time);
+        const dateField = await driver.findElementByText(time, SearchOptions.contains);
         expect(time).to.exist;
     });
 
