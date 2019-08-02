@@ -61,7 +61,7 @@ describe("DateTimePicker", () => {
     });
 
     it("Should verify demo title", async () => {
-        const title = await driver.findElementByText("DateTimePicker Demo NG", SearchOptions.exact);
+        const title = await driver.findElementByText("DateTimePicker Demo", SearchOptions.contains);
         expect(title).to.exist;
     });
 
@@ -144,7 +144,7 @@ describe("DateTimePicker", () => {
         const dateString = day + "." + monthString + "." + year;
         console.log(dateString);
         const dateField = await driver.findElementByText(dateString);
-        expect(dateString).to.exist;
+        expect(dateField).to.exist;
     });
 
     it("Should scroll to custom format and verify values", async () => {
@@ -244,8 +244,8 @@ describe("DateTimePicker", () => {
         let rejectBtn;
         if(driver.isAndroid){
             let buttons = await driver.findElementsByClassName("android.widget.Button");
-            acceptBtn = buttons[5];
-            rejectBtn = buttons[4];
+            acceptBtn = buttons[buttons.length - 1];
+            rejectBtn = buttons[buttons.length - 2];
         }
         else{
             acceptBtn = await driver.findElementByText("Bestätigen", SearchOptions.exact);
@@ -256,7 +256,7 @@ describe("DateTimePicker", () => {
         expect(rejectBtn).to.exist;
         expect(title).to.exist;
         await acceptBtn.click();
-        const dateField = await driver.findElementByText(time);
+        const dateField = await driver.findElementByText(time, SearchOptions.contains);
         expect(time).to.exist;
     });
 
@@ -283,36 +283,38 @@ describe("DateTimePicker", () => {
         await customButtonsTitle.click();
     });
 
-    it("Should tap button to select date and verify button text", async () => {
-        await scrollToElement(driver, "tap to select date and time", Direction.down);
-        let dateButton = await driver.findElementByText("tap to select date", SearchOptions.contains);
-        await dateButton.click();
-        const date = await getPickerDate(driver);
-        await clickOkBtn(driver);
-        const pickerDate = new Date(date);
-        let day = pickerDate.getDate();
-        let dayString = day.toString();
-        if(day < 10){
-            dayString = "0" + day.toString();
-        }
-        let month = pickerDate.getMonth() + 1;
-        let monthString = month.toString();
-        if(month < 10){
-            monthString = "0" + month.toString();
-        }
-        let year = pickerDate.getFullYear();
-        const dateString = dayString + "." + monthString+ "." + year;
-        console.log(dateString);
-        const dateField = await driver.findElementByText(dateString);
-        expect(dateString).to.exist;
-    })
+    if (process.env["Type"] === 'Angular'){
+        it("Should tap button to select date and verify button text", async () => {
+            await scrollToElement(driver, "tap to select date and time", Direction.down);
+            let dateButton = await driver.findElementByText("tap to select date", SearchOptions.contains);
+            await dateButton.click();
+            const date = await getPickerDate(driver);
+            await clickOkBtn(driver);
+            const pickerDate = new Date(date);
+            let day = pickerDate.getDate();
+            let dayString = day.toString();
+            if(day < 10){
+                dayString = "0" + day.toString();
+            }
+            let month = pickerDate.getMonth() + 1;
+            let monthString = month.toString();
+            if(month < 10){
+                monthString = "0" + month.toString();
+            }
+            let year = pickerDate.getFullYear();
+            const dateString = dayString + "." + monthString+ "." + year;
+            console.log(dateString);
+            const dateField = await driver.findElementByText(dateString);
+            expect(dateField).to.exist;
+        })
 
-    it("Should tap button to select time and verify button text", async () => {
-        let timeButton = await driver.findElementByText("tap to select time", SearchOptions.contains);
-        await timeButton.click();
-        const time = await getPickerTime(driver, 24);
-        await clickOkBtn(driver);
-        timeButton = await driver.findElementByText(time);
-        expect(timeButton).to.exist;
-    });
+        it("Should tap button to select time and verify button text", async () => {
+            let timeButton = await driver.findElementByText("tap to select time", SearchOptions.contains);
+            await timeButton.click();
+            const time = await getPickerTime(driver, 24);
+            await clickOkBtn(driver);
+            timeButton = await driver.findElementByText(time);
+            expect(timeButton).to.exist;
+        });
+    }
 });
