@@ -12,6 +12,7 @@ export class TimePickerFieldBase extends PickerFieldBase implements TimePickerFi
     public pickerDefaultTime: Date;
     public static timePickerOpenedEvent = "timePickerOpened";
     public static timePickerClosedEvent = "timePickerClosed";
+    public static timePickerCancelledEvent = "timePickerCancelled";
 
     private _nativeLocale: any;
     private _nativeTimeFormatter: any;
@@ -49,12 +50,18 @@ export class TimePickerFieldBase extends PickerFieldBase implements TimePickerFi
             .then((result: Date) => {
                 if (result) {
                     this.time = result;
+                    let args = <EventData>{
+                        eventName: TimePickerFieldBase.timePickerClosedEvent,
+                        object: this
+                    };
+                    this.notify(args);
+                } else {
+                    let args = <EventData>{
+                        eventName: TimePickerFieldBase.timePickerCancelledEvent,
+                        object: this
+                    };
+                    this.notify(args);
                 }
-                let args = <EventData>{
-                    eventName: TimePickerFieldBase.timePickerClosedEvent,
-                    object: this
-                };
-                this.notify(args);
             })
             .catch((err) => {
                 console.log('TimePickerField Error: ' + err);
