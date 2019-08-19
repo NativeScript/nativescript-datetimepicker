@@ -80,14 +80,10 @@
     },
     "android28": {
         "platformName": "Android",
-        "platformVersion": "28",
-        "deviceName": "Emulator-Api28-Google",
-        "avd": "Emulator-Api28-Google",
-        "lt": 60000,
-        "newCommandTimeout": 720,
-        "noReset": false,
-        "fullReset": false,
-        "app": ""
+        "platformVersion": "9.0",
+        "deviceName": "Android GoogleAPI Emulator",
+        "appiumVersion": "1.9.1",
+        "noReset": true
     },
     "sim.iPhone7": {
         "platformName": "iOS",
