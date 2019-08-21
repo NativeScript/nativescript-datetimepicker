@@ -63,21 +63,17 @@ export class DatePickerFieldBase extends PickerFieldBase implements DatePickerFi
             cancelButtonText: this.pickerCancelText
         }, style)
         .then((result: Date) => {
+            const args = <EventData>{
+                eventName: DatePickerFieldBase.datePickerCancelledEvent,
+                object: this
+            };
+            
             if (result) {
                 this.date = result;
-                let args = <EventData>{
-                    eventName: DatePickerFieldBase.datePickerClosedEvent,
-                    object: this
-                };
-                this.notify(args);
-            } else {
-                let args = <EventData>{
-                    eventName: DatePickerFieldBase.datePickerCancelledEvent,
-                    object: this
-                };
-                this.notify(args);
+                args.eventName = DatePickerFieldBase.datePickerClosedEvent;
             }
             
+            this.notify(args);
         })
         .catch((err) => {
             console.log('DatePickerField Error: ' + err);
