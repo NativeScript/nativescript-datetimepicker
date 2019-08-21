@@ -48,20 +48,17 @@ export class TimePickerFieldBase extends PickerFieldBase implements TimePickerFi
             is24Hours: this.is24Hours(this._nativeTimeFormatter)
         }, style)
             .then((result: Date) => {
+                const args = <EventData>{
+                    eventName: TimePickerFieldBase.timePickerCancelledEvent,
+                    object: this
+                };
+
                 if (result) {
                     this.time = result;
-                    let args = <EventData>{
-                        eventName: TimePickerFieldBase.timePickerClosedEvent,
-                        object: this
-                    };
-                    this.notify(args);
-                } else {
-                    let args = <EventData>{
-                        eventName: TimePickerFieldBase.timePickerCancelledEvent,
-                        object: this
-                    };
-                    this.notify(args);
+                    args.eventName = TimePickerFieldBase.timePickerClosedEvent;
                 }
+
+                this.notify(args);
             })
             .catch((err) => {
                 console.log('TimePickerField Error: ' + err);
