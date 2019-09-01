@@ -67,12 +67,12 @@ export class DatePickerFieldBase extends PickerFieldBase implements DatePickerFi
                 eventName: DatePickerFieldBase.datePickerCancelledEvent,
                 object: this
             };
-            
+
             if (result) {
                 this.date = result;
                 args.eventName = DatePickerFieldBase.datePickerClosedEvent;
             }
-            
+
             this.notify(args);
         })
         .catch((err) => {
