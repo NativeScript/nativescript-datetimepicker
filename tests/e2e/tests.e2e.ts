@@ -9,19 +9,19 @@ const rimraf = require('rimraf');
 const isSauceRun = isSauceLab;
 
 const deMonths = {
-    "Jan":"01",
-    "Feb":"02",
+    "Jan": "01",
+    "Feb": "02",
     "Mär": "03",
     "Apr": "04",
-    "Mai":"05",
-    "Jun":"06",
-    "Jul":"07",
-    "Aug":"08",
-    "Sep":"09",
-    "Okt":"10",
-    "Nov":"11", 
-    "Dez":"12"
-}
+    "Mai": "05",
+    "Jun": "06",
+    "Jul": "07",
+    "Aug": "08",
+    "Sep": "09",
+    "Okt": "10",
+    "Nov": "11",
+    "Dez": "12"
+};
 
 describe("DateTimePicker", () => {
     const defaultWaitTime = 5000;
@@ -117,12 +117,12 @@ describe("DateTimePicker", () => {
         let selector = driver.isAndroid ? "android.widget.Button" : "Bestätigen";
         let acceptBtn;
         let rejectBtn;
-        if(driver.isAndroid){
+        if (driver.isAndroid) {
             let buttons = await driver.findElementsByClassName(selector);
             acceptBtn = buttons[7];
             rejectBtn = buttons[6];
         }
-        else{
+        else {
             acceptBtn = await driver.findElementByText(selector, SearchOptions.contains);
             rejectBtn = await driver.findElementByText("Stornieren", SearchOptions.exact);
         }
@@ -131,10 +131,10 @@ describe("DateTimePicker", () => {
         expect(rejectBtn).to.exist;
         expect(title).to.exist;
         await acceptBtn.click();
-        let index = driver.isAndroid ? " " : "."
+        let index = driver.isAndroid ? " " : ".";
         let day = date.substring(0, date.indexOf(index));
         let dayNum = parseInt(day);
-        if(!driver.isAndroid && dayNum < 10){
+        if (!driver.isAndroid && dayNum < 10) {
             day = "0" + day;
         }
         let month = date.substring(date.indexOf(" ") + 1, date.indexOf(","));
@@ -167,13 +167,13 @@ describe("DateTimePicker", () => {
         await scrollToElement(driver, "TimePickerField", Direction.down);
         const bindingLabel = await driver.findElementByText("binding", SearchOptions.exact);
         expect(bindingLabel).to.exist;
-        let selector = driver.isAndroid ? "android.widget.EditText" : "XCUIElementTypeTextField"
+        let selector = driver.isAndroid ? "android.widget.EditText" : "XCUIElementTypeTextField";
         let fields = await driver.findElementsByClassName(selector);
         let dateField;
-        if(driver.isAndroid){
+        if (driver.isAndroid) {
             dateField = fields[3];
-        } 
-        else{
+        }
+        else {
             let index = fields.length;
             console.log("index: " + index);
             dateField = fields[index - 1];
@@ -242,12 +242,12 @@ describe("DateTimePicker", () => {
         const time = await getPickerTime(driver, 24);
         let acceptBtn;
         let rejectBtn;
-        if(driver.isAndroid){
+        if (driver.isAndroid) {
             let buttons = await driver.findElementsByClassName("android.widget.Button");
             acceptBtn = buttons[buttons.length - 1];
             rejectBtn = buttons[buttons.length - 2];
         }
-        else{
+        else {
             acceptBtn = await driver.findElementByText("Bestätigen", SearchOptions.exact);
             rejectBtn = await driver.findElementByText("Stornieren", SearchOptions.exact);
         }
@@ -283,7 +283,7 @@ describe("DateTimePicker", () => {
         await customButtonsTitle.click();
     });
 
-    if (process.env["Type"] === 'Angular'){
+    if (process.env["Type"] === 'Angular') {
         it("Should tap button to select date and verify button text", async () => {
             await scrollToElement(driver, "tap to select date and time", Direction.down);
             let dateButton = await driver.findElementByText("tap to select date", SearchOptions.contains);
@@ -293,20 +293,20 @@ describe("DateTimePicker", () => {
             const pickerDate = new Date(date);
             let day = pickerDate.getDate();
             let dayString = day.toString();
-            if(day < 10){
+            if (day < 10) {
                 dayString = "0" + day.toString();
             }
             let month = pickerDate.getMonth() + 1;
             let monthString = month.toString();
-            if(month < 10){
+            if (month < 10) {
                 monthString = "0" + month.toString();
             }
             let year = pickerDate.getFullYear();
-            const dateString = dayString + "." + monthString+ "." + year;
+            const dateString = dayString + "." + monthString + "." + year;
             console.log(dateString);
             const dateField = await driver.findElementByText(dateString);
             expect(dateField).to.exist;
-        })
+        });
 
         it("Should tap button to select time and verify button text", async () => {
             let timeButton = await driver.findElementByText("tap to select time", SearchOptions.contains);

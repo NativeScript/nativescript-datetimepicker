@@ -14,6 +14,7 @@ export class DatePickerFieldBase extends PickerFieldBase implements DatePickerFi
     public pickerDefaultDate: Date;
     public static datePickerOpenedEvent = "datePickerOpened";
     public static datePickerClosedEvent = "datePickerClosed";
+    public static datePickerCancelledEvent = "datePickerCancelled";
 
     private _nativeLocale: any;
     private _nativeDateFormatter: any;
@@ -62,13 +63,16 @@ export class DatePickerFieldBase extends PickerFieldBase implements DatePickerFi
             cancelButtonText: this.pickerCancelText
         }, style)
         .then((result: Date) => {
-            if (result) {
-                this.date = result;
-            }
-            let args = <EventData>{
-                eventName: DatePickerFieldBase.datePickerClosedEvent,
+            const args = <EventData>{
+                eventName: DatePickerFieldBase.datePickerCancelledEvent,
                 object: this
             };
+
+            if (result) {
+                this.date = result;
+                args.eventName = DatePickerFieldBase.datePickerClosedEvent;
+            }
+
             this.notify(args);
         })
         .catch((err) => {
