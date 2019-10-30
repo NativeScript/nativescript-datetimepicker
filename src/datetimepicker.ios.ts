@@ -81,8 +81,7 @@ export class DateTimePicker extends DateTimePickerBase {
             pickerContainerFrameTop += DateTimePicker.PICKER_DEFAULT_TITLE_HEIGHT;
         }
         const pickerViewHeight = DateTimePicker.PICKER_DEFAULT_MESSAGE_HEIGHT;
-        const pickerContainerFrame = CGRectMake(0, pickerContainerFrameTop, pickerViewWidth, pickerViewHeight);
-        const pickerContainer = UIView.alloc().initWithFrame(pickerContainerFrame);
+        const pickerContainer = UIView.alloc().init();
         let spinnersBackgroundColor = new Color("transparent");
         let spinnersTextColor = null;
         if (style) {
@@ -94,11 +93,21 @@ export class DateTimePicker extends DateTimePickerBase {
         const pickerView = nativePicker;
         pickerView.frame = CGRectMake(0, 0, pickerViewWidth, pickerViewHeight);
         pickerContainer.addSubview(pickerView);
+        DateTimePicker._clearVibrancyEffects(alertController.view);
 
         const messageLabel = DateTimePicker._findLabelWithText(alertController.view, DateTimePicker.PICKER_DEFAULT_MESSAGE);
-        const messageLabelContainer = messageLabel.superview;
+        const messageLabelContainer = DateTimePicker._getLabelContainer(messageLabel);
         messageLabelContainer.clipsToBounds = true;
         messageLabelContainer.addSubview(pickerContainer);
+
+        pickerContainer.translatesAutoresizingMaskIntoConstraints = false;
+        pickerContainer.topAnchor.constraintEqualToAnchorConstant(alertController.view.topAnchor, pickerContainerFrameTop).active = true;
+        pickerContainer.leftAnchor.constraintEqualToAnchor(alertController.view.leftAnchor).active = true;
+        pickerContainer.rightAnchor.constraintEqualToAnchor(alertController.view.rightAnchor).active = true;
+        pickerContainer.bottomAnchor.constraintEqualToAnchor(alertController.view.bottomAnchor).active = true;
+
+        pickerView.leftAnchor.constraintLessThanOrEqualToAnchorConstant(pickerContainer.leftAnchor, DateTimePicker.PICKER_WIDTH_INSETS).active = true;
+        pickerView.rightAnchor.constraintLessThanOrEqualToAnchorConstant(pickerContainer.rightAnchor, DateTimePicker.PICKER_WIDTH_INSETS).active = true;
 
         const cancelButtonText = options.cancelButtonText ? options.cancelButtonText : "Cancel";
         const okButtonText = options.okButtonText ? options.okButtonText : "OK";
@@ -169,6 +178,7 @@ export class DateTimePicker extends DateTimePickerBase {
         }
         if (color) {
             nativePicker.setValueForKey(color.ios, "textColor");
+            nativePicker.setValueForKey(false, "highlightsToday");
         }
     }
 
@@ -199,6 +209,25 @@ export class DateTimePicker extends DateTimePickerBase {
                 buttonsContainer.backgroundColor = buttonsBackground.ios;
             }
         }
+    }
+
+    private static _clearVibrancyEffects(uiView: UIView) {
+        if (uiView instanceof UIVisualEffectView && uiView.effect instanceof UIVibrancyEffect) {
+            // Since ios13 UIAlertController has some effects which cause
+            // semi-transparency and interfere with color customizations:
+            uiView.effect = null;
+        }
+        const subViewsCount = uiView.subviews.count;
+        for (let i = 0; i < subViewsCount; i++) {
+            DateTimePicker._clearVibrancyEffects(uiView.subviews[i]);
+        }
+    }
+
+    private static _getLabelContainer(uiView: UIView) {
+        if (uiView.superview.class() === (UIView.class())) {
+            return uiView.superview;
+        }
+        return DateTimePicker._getLabelContainer(uiView.superview);
     }
 
     private static _findLabelWithText(uiView: UIView, text: string) {
