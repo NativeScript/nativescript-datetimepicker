@@ -155,6 +155,11 @@ export class DateTimePicker extends DateTimePickerBase {
         const context = options.context;
         let dateTime: Date;
         if (value) {
+            if (nativePicker instanceof android.widget.DatePicker) {
+                const minDate = (<DatePickerOptions>options).minDate;
+                const maxDate = (<DatePickerOptions>options).maxDate;
+                value = DateTimePicker._trimDate(value, minDate, maxDate);
+            }
             dateTime = new Date(value.getTime());
         } else {
             dateTime = (nativePicker instanceof android.widget.DatePicker) ? getDateToday() : getDateNow();
@@ -186,6 +191,17 @@ export class DateTimePicker extends DateTimePickerBase {
             DateTimePicker._applyDialogOkButtonColors(nativeDialog, buttonOkTextColor, buttonOkBackgroundColor);
             DateTimePicker._applyDialogCancelButtonColors(nativeDialog, buttonCancelTextColor, buttonCancelBackgroundColor);
         }
+    }
+
+    private static _trimDate(originalDate: Date, minDate: Date, maxDate: Date) {
+        let finalDate = originalDate;
+        if (minDate !== undefined && minDate > finalDate) {
+            finalDate = minDate;
+        }
+        if (maxDate !== undefined && maxDate < finalDate) {
+            finalDate = maxDate;
+        }
+        return finalDate;
     }
 
     private static _applyDialogColors(nativeDialog: android.app.AlertDialog, color: Color, backgroundColor: Color) {
