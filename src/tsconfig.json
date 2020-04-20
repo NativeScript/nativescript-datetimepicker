@@ -4,26 +4,31 @@
         "module": "commonjs",
         "removeComments": true,
         "noLib": false,
+        "declaration": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "skipLibCheck": true,
-        "lib": ["es6", "dom"],
+        "lib": [
+          "es2017",
+          "dom",
+          "webworker",
+          "es6"],
         "sourceMap": true,
         "pretty": true,
         "allowUnreachableCode": false,
         "allowUnusedLabels": false,
         "noEmitHelpers": true,
-        "noEmitOnError": false,
+        "noEmitOnError": true,
         "noImplicitAny": false,
         "noImplicitReturns": true,
         "noImplicitUseStrict": false,
         "noFallthroughCasesInSwitch": true
     },
     "angularCompilerOptions": {
-        "genDir": ".",
         "skipMetadataEmit": false,
         "skipTemplateCodegen": true,
-        "strictMetadataEmit": true
+        "strictMetadataEmit": true,
+        "enableIvy": false
     },
     "exclude": [
         "node_modules",

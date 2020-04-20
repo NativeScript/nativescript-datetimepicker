@@ -1,14 +1,13 @@
-import { Property, CSSType, EventData } from "tns-core-modules/ui/core/view";
-import { PropertyChangeData } from "tns-core-modules/data/observable";
-import { DateTimePickerFields as DateTimePickerFieldsDefinition } from "./date-time-picker-fields";
-import { GridLayout, ItemSpec } from "tns-core-modules/ui/layouts/grid-layout";
-import { Orientation } from "tns-core-modules/ui/layouts/stack-layout";
+import { Property, CSSType } from "@nativescript/core/ui/core/view";
+import { GridLayout, PropertyChangeData, EventData } from "@nativescript/core";
+import { ItemSpec } from "@nativescript/core/ui/layouts/grid-layout";
+import { Orientation } from "@nativescript/core/ui/scroll-view";
 import { DatePickerField } from "./date-picker-field";
 import { TimePickerField } from "./time-picker-field";
 import { getDateNow, clearTime, dateComparer } from "../utils/date-utils";
 
 @CSSType("DateTimePickerFields")
-export class DateTimePickerFields extends GridLayout implements DateTimePickerFieldsDefinition {
+export class DateTimePickerFields extends GridLayout {
     public dateField: DatePickerField;
     public timeField: TimePickerField;
 

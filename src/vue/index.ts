@@ -1,6 +1,4 @@
-import { DatePickerField } from "../ui/date-picker-field";
-import { TimePickerField } from "../ui/time-picker-field";
-import { DateTimePickerFields } from "../ui/date-time-picker-fields";
+import { DatePickerField, TimePickerField, DateTimePickerFields } from "../ui";
 
 const DateTimePicker = {
     install(Vue) {

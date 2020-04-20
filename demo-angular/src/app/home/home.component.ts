@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { DateTimePicker } from "nativescript-datetimepicker";
-import { EventData } from "tns-core-modules/data/observable";
-import { Button } from "tns-core-modules/ui/button";
+import { Button, EventData } from "@nativescript/core";
 
 @Component({
     selector: "Home",

@@ -172,8 +172,7 @@
 
 <script>
     import { DateTimePicker } from "nativescript-datetimepicker";
-    import { EventData } from "tns-core-modules/data/observable";
-    import { Button } from "tns-core-modules/ui/button";
+    import { EventData, Button } from "@nativescript/core";
     export default {
         computed: {
             message() {

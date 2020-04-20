@@ -1,6 +1,6 @@
 import { Directive, ElementRef, forwardRef } from "@angular/core";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
-import { BaseValueAccessor } from "nativescript-angular/forms/value-accessors";
+import { BaseValueAccessor } from "@nativescript/angular/forms/value-accessors";
 import { DatePickerField } from "../ui/date-picker-field";
 import { TimePickerField } from "../ui/time-picker-field";
 import { DateTimePickerFields } from "../ui/date-time-picker-fields";

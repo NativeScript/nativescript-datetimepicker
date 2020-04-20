@@ -8,9 +8,9 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "lib": [
-            "es6",
-            "dom",
-            "es2015.iterable"
+          "es2017",
+          "dom",
+          "es6"
         ],
         "pretty": true,
         "allowUnreachableCode": false,
@@ -25,7 +25,6 @@
         "baseUrl": ".",
         "paths": {
             "*": [
-                "./node_modules/tns-core-modules/*",
                 "./node_modules/*"
             ],
             "~/*": [
@@ -42,5 +41,8 @@
         "node_modules",
         "platforms"
     ],
-    "compileOnSave": false
+    "compileOnSave": false,
+    "angularCompilerOptions": {
+      "enableIvy": false
+    }
 }

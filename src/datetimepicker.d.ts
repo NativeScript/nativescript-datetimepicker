@@ -1,5 +1,4 @@
-import { Color } from "tns-core-modules/color";
-import { View } from "tns-core-modules/ui/core/view";
+import { Color, View } from "@nativescript/core";
 
 /**
  * Represents a class that provides methods for picking date and time.
