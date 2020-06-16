@@ -2,7 +2,7 @@ import { View } from "tns-core-modules/ui/core/view";
 import { ContentView } from "tns-core-modules/ui/content-view";
 import { Page } from "tns-core-modules/ui/page";
 import { Color } from "tns-core-modules/color";
-import * as frameModule from "tns-core-modules/ui/frame";
+import { Frame } from "tns-core-modules/ui/frame";
 import {
     DateTimePicker as DateTimePickerDefinition,
     DateTimePickerStyle as DateTimePickerStyleDefinition
@@ -76,7 +76,7 @@ export class DateTimePickerStyleBase implements DateTimePickerStyleDefinition {
 }
 
 export function getCurrentPage(): Page {
-    let topmostFrame = frameModule.topmost();
+    let topmostFrame = Frame.topmost();
     if (topmostFrame) {
         return topmostFrame.currentPage;
     }
