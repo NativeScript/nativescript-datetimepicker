@@ -148,6 +148,7 @@ export class DateTimePicker extends DateTimePickerBase {
                     const parentWithController = iosView.getParentWithViewController(view);
                     viewController = parentWithController ? parentWithController.viewController : undefined;
                 }
+                viewController = viewController.presentedViewController;
             }
 
             if (viewController) {
