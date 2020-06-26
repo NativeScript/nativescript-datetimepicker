@@ -149,7 +149,7 @@ export class DateTimePicker extends DateTimePickerBase {
                     viewController = parentWithController ? parentWithController.viewController : undefined;
                 }
 
-                if (viewController.presentedViewController) {
+                while (viewController.presentedViewController) {
                     viewController = viewController.presentedViewController;
                 }
             }
