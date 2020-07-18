@@ -28,7 +28,7 @@
         "skipMetadataEmit": false,
         "skipTemplateCodegen": true,
         "strictMetadataEmit": true,
-        "enableIvy": false
+        "enableIvy": true
     },
     "exclude": [
         "node_modules",

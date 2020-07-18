@@ -1,4 +1,4 @@
-import { Property } from "@nativescript/core/ui/core/view";
+import { Property } from "@nativescript/core";
 import { TimePickerField as TimePickerFieldDefinition } from "./time-picker-field";
 import { PickerFieldBase } from "./picker-field-base";
 export declare class TimePickerFieldBase extends PickerFieldBase implements TimePickerFieldDefinition {

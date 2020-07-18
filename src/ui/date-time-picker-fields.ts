@@ -1,10 +1,9 @@
-import { Property, CSSType } from "@nativescript/core/ui/core/view";
-import { GridLayout, PropertyChangeData, EventData } from "@nativescript/core";
-import { ItemSpec } from "@nativescript/core/ui/layouts/grid-layout";
-import { Orientation } from "@nativescript/core/ui/scroll-view";
+import { Property, CSSType, GridLayout, PropertyChangeData, EventData, ItemSpec } from "@nativescript/core";
 import { DatePickerField } from "./date-picker-field";
 import { TimePickerField } from "./time-picker-field";
 import { getDateNow, clearTime, dateComparer } from "../utils/date-utils";
+
+type ScrollOrientation = 'horizontal' | 'vertical';
 
 @CSSType("DateTimePickerFields")
 export class DateTimePickerFields extends GridLayout {
@@ -28,7 +27,7 @@ export class DateTimePickerFields extends GridLayout {
     public pickerOkText: string;
     public pickerCancelText: string;
 
-    public orientation: Orientation;
+    public orientation: ScrollOrientation;
     public autoPickTime: boolean;
 
     _shouldSkipTimeAssignment: boolean;
@@ -131,7 +130,7 @@ export class DateTimePickerFields extends GridLayout {
         valueChanged: DateTimePickerFields.pickerCancelTextPropertyChanged
     });
 
-    public static orientationProperty = new Property<DateTimePickerFields, Orientation>({
+    public static orientationProperty = new Property<DateTimePickerFields, ScrollOrientation>({
         name: "orientation",
         defaultValue: "horizontal",
         valueChanged: DateTimePickerFields.orientationPropertyChanged
@@ -203,7 +202,7 @@ export class DateTimePickerFields extends GridLayout {
         field.timeField.pickerCancelText = newValue;
     }
 
-    private static orientationPropertyChanged(field: DateTimePickerFields, oldValue: Orientation, newValue: Orientation) {
+    private static orientationPropertyChanged(field: DateTimePickerFields, oldValue: ScrollOrientation, newValue: ScrollOrientation) {
         DateTimePickerFields._updateOrientation(field);
     }
 

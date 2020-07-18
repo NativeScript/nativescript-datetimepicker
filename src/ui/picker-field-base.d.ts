@@ -1,5 +1,4 @@
-import { TextField } from "@nativescript/core";
-import { Property } from "@nativescript/core/ui/core/view";
+import { TextField, Property } from "@nativescript/core";
 export declare abstract class PickerFieldBase extends TextField {
     locale: string;
     pickerTitle: string;

@@ -1,4 +1,4 @@
-import { Property } from "@nativescript/core/ui/core/view";
+import { Property } from "@nativescript/core";
 import { DatePickerField as DatePickerFieldDefinition } from "./date-picker-field";
 import { PickerFieldBase } from "./picker-field-base";
 export declare class DatePickerFieldBase extends PickerFieldBase implements DatePickerFieldDefinition {

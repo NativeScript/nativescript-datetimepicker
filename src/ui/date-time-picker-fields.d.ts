@@ -1,8 +1,7 @@
-import { Property } from "@nativescript/core/ui/core/view";
-import { GridLayout, EventData } from "@nativescript/core";
-import { Orientation } from "@nativescript/core/ui/scroll-view";
+import { Property, GridLayout, EventData } from "@nativescript/core";
 import { DatePickerField } from "./date-picker-field";
 import { TimePickerField } from "./time-picker-field";
+declare type ScrollOrientation = 'horizontal' | 'vertical';
 export declare class DateTimePickerFields extends GridLayout {
     dateField: DatePickerField;
     timeField: TimePickerField;
@@ -19,7 +18,7 @@ export declare class DateTimePickerFields extends GridLayout {
     pickerTitleTime: string;
     pickerOkText: string;
     pickerCancelText: string;
-    orientation: Orientation;
+    orientation: ScrollOrientation;
     autoPickTime: boolean;
     _shouldSkipTimeAssignment: boolean;
     private _dateChangeHandler;
@@ -38,7 +37,7 @@ export declare class DateTimePickerFields extends GridLayout {
     static pickerTitleTimeProperty: Property<DateTimePickerFields, string>;
     static pickerOkTextProperty: Property<DateTimePickerFields, string>;
     static pickerCancelTextProperty: Property<DateTimePickerFields, string>;
-    static orientationProperty: Property<DateTimePickerFields, Orientation>;
+    static orientationProperty: Property<DateTimePickerFields, ScrollOrientation>;
     static autoPickTimeProperty: Property<DateTimePickerFields, boolean>;
     private static datePropertyChanged;
     private static maxDatePropertyChanged;
@@ -65,3 +64,4 @@ export declare class DateTimePickerFields extends GridLayout {
     private static _updateOrientation;
 }
 export declare function dateValueConverter(v: any): Date;
+export {};

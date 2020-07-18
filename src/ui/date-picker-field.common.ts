@@ -1,5 +1,4 @@
-import { EventData } from "@nativescript/core";
-import { Property, CSSType } from "@nativescript/core/ui/core/view";
+import { EventData, Property, CSSType } from "@nativescript/core";
 import { DateTimePicker, DateTimePickerStyle } from "../datetimepicker";
 import { DatePickerField as DatePickerFieldDefinition } from "./date-picker-field";
 import { LocalizationUtils } from "../utils/localization-utils";
