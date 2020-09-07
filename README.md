@@ -1,3 +1,10 @@
+## NativeScript 7
+
+* Use `@nativescript/datetimepicker`: `~2.0.0`
+* [Source managed here](https://github.com/NativeScript/plugins)
+
+## If using 6 and below, see the following:
+
 # NativeScript DateTimePicker
 
 [![npm](https://img.shields.io/npm/v/nativescript-datetimepicker.svg)](https://www.npmjs.com/package/nativescript-datetimepicker)
