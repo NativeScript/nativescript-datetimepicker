@@ -1,4 +1,4 @@
-import { Property, CSSType, EventData } from "tns-core-modules/ui/core/view";
+import { Property, CSSType, EventData } from "@nativescript/core";
 import { DateTimePicker, DateTimePickerStyle } from "../datetimepicker";
 import { TimePickerField as TimePickerFieldDefinition } from "./time-picker-field";
 import { LocalizationUtils } from "../utils/localization-utils";

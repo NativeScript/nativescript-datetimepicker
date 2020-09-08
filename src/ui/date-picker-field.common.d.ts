@@ -1,0 +1,30 @@
+import { Property } from "@nativescript/core";
+import { DatePickerField as DatePickerFieldDefinition } from "./date-picker-field";
+import { PickerFieldBase } from "./picker-field-base";
+export declare class DatePickerFieldBase extends PickerFieldBase implements DatePickerFieldDefinition {
+    maxDate: Date;
+    minDate: Date;
+    date: Date;
+    dateFormat: string;
+    pickerDefaultDate: Date;
+    static datePickerOpenedEvent: string;
+    static datePickerClosedEvent: string;
+    private _nativeLocale;
+    private _nativeDateFormatter;
+    static dateProperty: Property<DatePickerFieldBase, Date>;
+    static maxDateProperty: Property<DatePickerFieldBase, Date>;
+    static minDateProperty: Property<DatePickerFieldBase, Date>;
+    static dateFormatProperty: Property<DatePickerFieldBase, string>;
+    static pickerDefaultDateProperty: Property<DatePickerFieldBase, Date>;
+    open(): void;
+    updateText(): void;
+    initNativeView(): void;
+    private static datePropertyChanged;
+    private static dateFormatPropertyChanged;
+    protected onDateFormatChanged(oldValue: string, newValue: string): void;
+    protected onLocaleChanged(oldValue: string, newValue: string): void;
+    protected getFormattedDate(date: Date): string;
+    private _initRegionalSettings;
+    private _updateRegionalSettings;
+}
+export declare function dateValueConverter(v: any): Date;

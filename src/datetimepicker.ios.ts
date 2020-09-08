@@ -1,5 +1,4 @@
-import { Color } from "tns-core-modules/color";
-import { View, ios as iosView } from "tns-core-modules/ui/core/view";
+import { Color, View, iOSApplication, IOSHelper } from "@nativescript/core";
 import {
     DateTimePickerBase, DateTimePickerStyleBase, getCurrentPage,
     DatePickerOptions, TimePickerOptions, PickerOptions
@@ -145,7 +144,7 @@ export class DateTimePicker extends DateTimePickerBase {
                 if (view.ios instanceof UIViewController) {
                     viewController = view.ios;
                 } else {
-                    const parentWithController = iosView.getParentWithViewController(view);
+                    const parentWithController = IOSHelper.getParentWithViewController(view);
                     viewController = parentWithController ? parentWithController.viewController : undefined;
                 }
             }

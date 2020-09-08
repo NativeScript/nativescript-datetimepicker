@@ -1,6 +1,4 @@
-import { TextField } from "tns-core-modules/ui/text-field";
-import { GestureTypes, TouchGestureEventData } from "tns-core-modules/ui/gestures";
-import { Property } from "tns-core-modules/ui/core/view";
+import { TextField, Property, GestureTypes, TouchGestureEventData } from "@nativescript/core";
 
 export abstract class PickerFieldBase extends TextField {
     public locale: string;

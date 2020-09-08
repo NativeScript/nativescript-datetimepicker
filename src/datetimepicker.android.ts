@@ -1,4 +1,4 @@
-import { Color } from "tns-core-modules/color";
+import { Color } from "@nativescript/core";
 import { LocalizationUtils } from "./utils/localization-utils";
 import { getDateNow, getDateToday } from "./utils/date-utils";
 import {

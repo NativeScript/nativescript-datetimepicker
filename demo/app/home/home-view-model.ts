@@ -1,8 +1,5 @@
-import { Observable } from "tns-core-modules/data/observable";
 import { DateTimePicker } from "nativescript-datetimepicker";
-import { EventData } from "tns-core-modules/data/observable";
-import { Button } from "tns-core-modules/ui/button";
-import { ScrollView } from "tns-core-modules/ui/scroll-view";
+import { ScrollView, Button, EventData, Observable } from "@nativescript/core";
 
 export class HomeViewModel extends Observable {
     private scrollView: ScrollView;

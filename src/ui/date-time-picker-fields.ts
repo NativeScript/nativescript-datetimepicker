@@ -1,14 +1,12 @@
-import { Property, CSSType, EventData } from "tns-core-modules/ui/core/view";
-import { PropertyChangeData } from "tns-core-modules/data/observable";
-import { DateTimePickerFields as DateTimePickerFieldsDefinition } from "./date-time-picker-fields";
-import { GridLayout, ItemSpec } from "tns-core-modules/ui/layouts/grid-layout";
-import { Orientation } from "tns-core-modules/ui/layouts/stack-layout";
+import { Property, CSSType, GridLayout, PropertyChangeData, EventData, ItemSpec } from "@nativescript/core";
 import { DatePickerField } from "./date-picker-field";
 import { TimePickerField } from "./time-picker-field";
 import { getDateNow, clearTime, dateComparer } from "../utils/date-utils";
 
+type ScrollOrientation = 'horizontal' | 'vertical';
+
 @CSSType("DateTimePickerFields")
-export class DateTimePickerFields extends GridLayout implements DateTimePickerFieldsDefinition {
+export class DateTimePickerFields extends GridLayout {
     public dateField: DatePickerField;
     public timeField: TimePickerField;
 
@@ -29,7 +27,7 @@ export class DateTimePickerFields extends GridLayout implements DateTimePickerFi
     public pickerOkText: string;
     public pickerCancelText: string;
 
-    public orientation: Orientation;
+    public orientation: ScrollOrientation;
     public autoPickTime: boolean;
 
     _shouldSkipTimeAssignment: boolean;
@@ -132,7 +130,7 @@ export class DateTimePickerFields extends GridLayout implements DateTimePickerFi
         valueChanged: DateTimePickerFields.pickerCancelTextPropertyChanged
     });
 
-    public static orientationProperty = new Property<DateTimePickerFields, Orientation>({
+    public static orientationProperty = new Property<DateTimePickerFields, ScrollOrientation>({
         name: "orientation",
         defaultValue: "horizontal",
         valueChanged: DateTimePickerFields.orientationPropertyChanged
@@ -204,7 +202,7 @@ export class DateTimePickerFields extends GridLayout implements DateTimePickerFi
         field.timeField.pickerCancelText = newValue;
     }
 
-    private static orientationPropertyChanged(field: DateTimePickerFields, oldValue: Orientation, newValue: Orientation) {
+    private static orientationPropertyChanged(field: DateTimePickerFields, oldValue: ScrollOrientation, newValue: ScrollOrientation) {
         DateTimePickerFields._updateOrientation(field);
     }
 
