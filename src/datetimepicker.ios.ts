@@ -1,5 +1,6 @@
 import { Color } from "tns-core-modules/color";
 import { View, ios as iosView } from "tns-core-modules/ui/core/view";
+import { device } from "tns-core-modules/platform";
 import {
     DateTimePickerBase, DateTimePickerStyleBase, getCurrentPage,
     DatePickerOptions, TimePickerOptions, PickerOptions
@@ -9,6 +10,10 @@ import { getDateNow, getDateToday } from "./utils/date-utils";
 
 export class DateTimePickerStyle extends DateTimePickerStyleBase {
 }
+
+const SUPPORT_DATE_PICKER_STYLE = parseFloat(device.osVersion) >= 14.0;
+const SUPPORT_TEXT_COLOR = parseFloat(device.osVersion) < 14.0;
+const DEFAULT_DATE_PICKER_STYLE = 1;
 
 export class DateTimePicker extends DateTimePickerBase {
     public static PICKER_DEFAULT_MESSAGE_HEIGHT = 192;
@@ -43,6 +48,9 @@ export class DateTimePicker extends DateTimePickerBase {
     static _createNativeDatePicker(options: DatePickerOptions): UIDatePicker {
         const pickerView = UIDatePicker.alloc().initWithFrame(CGRectZero);
         pickerView.datePickerMode = UIDatePickerMode.Date;
+        if (SUPPORT_DATE_PICKER_STYLE) {
+            (pickerView as any).preferredDatePickerStyle = DEFAULT_DATE_PICKER_STYLE;
+        }
         const date = options.date ? options.date : getDateToday();
         pickerView.date = date;
         if (options.maxDate) {
@@ -60,6 +68,9 @@ export class DateTimePicker extends DateTimePickerBase {
     static _createNativeTimePicker(options: TimePickerOptions): UIDatePicker {
         const pickerView = UIDatePicker.alloc().initWithFrame(CGRectZero);
         pickerView.datePickerMode = UIDatePickerMode.Time;
+        if (SUPPORT_DATE_PICKER_STYLE) {
+            (pickerView as any).preferredDatePickerStyle = DEFAULT_DATE_PICKER_STYLE;
+        }
         const time = options.time ? options.time : getDateNow();
         pickerView.date = time;
         if (options.locale) {
@@ -177,7 +188,9 @@ export class DateTimePicker extends DateTimePickerBase {
             nativeContainer.backgroundColor = backgroundColor.ios;
         }
         if (color) {
-            nativePicker.setValueForKey(color.ios, "textColor");
+            if (SUPPORT_TEXT_COLOR) {
+                nativePicker.setValueForKey(color, 'textColor');
+            }
             nativePicker.setValueForKey(false, "highlightsToday");
         }
     }
