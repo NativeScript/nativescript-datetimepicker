@@ -11,11 +11,11 @@ import { getDateNow, getDateToday } from "./utils/date-utils";
 export class DateTimePickerStyle extends DateTimePickerStyleBase {
 }
 
-const SUPPORT_DATE_PICKER_STYLE = parseFloat(device.osVersion) >= 14.0;
-const SUPPORT_TEXT_COLOR = parseFloat(device.osVersion) < 14.0;
-const DEFAULT_DATE_PICKER_STYLE = 1;
-
 export class DateTimePicker extends DateTimePickerBase {
+    private static readonly  SUPPORT_DATE_PICKER_STYLE = parseFloat(device.osVersion) >= 14.0;
+    private static readonly  SUPPORT_TEXT_COLOR = parseFloat(device.osVersion) < 14.0;
+    private static readonly  DEFAULT_DATE_PICKER_STYLE = 1;
+
     public static PICKER_DEFAULT_MESSAGE_HEIGHT = 192;
     public static PICKER_WIDTH_INSETS = 16;
     public static PICKER_WIDTH_PAD = 304;
@@ -48,8 +48,8 @@ export class DateTimePicker extends DateTimePickerBase {
     static _createNativeDatePicker(options: DatePickerOptions): UIDatePicker {
         const pickerView = UIDatePicker.alloc().initWithFrame(CGRectZero);
         pickerView.datePickerMode = UIDatePickerMode.Date;
-        if (SUPPORT_DATE_PICKER_STYLE) {
-            (pickerView as any).preferredDatePickerStyle = DEFAULT_DATE_PICKER_STYLE;
+        if (this.SUPPORT_DATE_PICKER_STYLE) {
+            (pickerView as any).preferredDatePickerStyle = this.DEFAULT_DATE_PICKER_STYLE;
         }
         const date = options.date ? options.date : getDateToday();
         pickerView.date = date;
@@ -68,8 +68,8 @@ export class DateTimePicker extends DateTimePickerBase {
     static _createNativeTimePicker(options: TimePickerOptions): UIDatePicker {
         const pickerView = UIDatePicker.alloc().initWithFrame(CGRectZero);
         pickerView.datePickerMode = UIDatePickerMode.Time;
-        if (SUPPORT_DATE_PICKER_STYLE) {
-            (pickerView as any).preferredDatePickerStyle = DEFAULT_DATE_PICKER_STYLE;
+        if (this.SUPPORT_DATE_PICKER_STYLE) {
+            (pickerView as any).preferredDatePickerStyle = this.DEFAULT_DATE_PICKER_STYLE;
         }
         const time = options.time ? options.time : getDateNow();
         pickerView.date = time;
@@ -188,7 +188,7 @@ export class DateTimePicker extends DateTimePickerBase {
             nativeContainer.backgroundColor = backgroundColor.ios;
         }
         if (color) {
-            if (SUPPORT_TEXT_COLOR) {
+            if (this.SUPPORT_TEXT_COLOR) {
                 nativePicker.setValueForKey(color, 'textColor');
             }
             nativePicker.setValueForKey(false, "highlightsToday");
