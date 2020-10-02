@@ -1,6 +1,6 @@
 {
   "name": "nativescript-datetimepicker",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A NativeScript plugin for picking date and time.",
   "typings": "index.d.ts",
   "nativescript": {
@@ -11,7 +11,7 @@
   },
   "scripts": {
     "tsc": "npm i && tsc",
-    "build": "npm run tsc",
+    "build": "npm run tsc && npm run ngc",
     "tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\" --exclude \"**/platforms/**\"",
     "plugin.tscwatch": "npm run tsc -- -w",
     "demo.ios": "npm run build && cd ../demo && tns run ios --emulator",
@@ -69,8 +69,8 @@
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3",
     "semver": "^5.6.0",
-    "tns-core-modules": "^6.0.0",
-    "tns-platform-declarations": "^6.0.0",
+    "tns-core-modules": "~6.5.0",
+    "tns-platform-declarations": "~6.0.0",
     "tslint": "^5.11.0",
     "typescript": "~3.5.3",
     "zone.js": "^0.8.4"
