@@ -1,4 +1,3 @@
-import { DatePickerFieldBase } from "./date-picker-field.common";
+import { DatePickerFieldBase } from './date-picker-field.common';
 
-export class DatePickerField extends DatePickerFieldBase {
-}
+export class DatePickerField extends DatePickerFieldBase {}

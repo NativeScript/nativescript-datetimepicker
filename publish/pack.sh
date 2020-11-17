@@ -1,13 +1,13 @@
 #!/bin/bash
 
-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SOURCE_DIR="$CURRENT_DIR/../src"
 TO_SOURCE_DIR="$CURRENT_DIR/src"
 PACK_DIR="$CURRENT_DIR/package"
 ROOT_DIR="$CURRENT_DIR/.."
 PUBLISH=--publish
 
-install(){
+install() {
     cd $CURRENT_DIR
     npm i
 }
@@ -34,6 +34,7 @@ pack() {
     # compile package and copy files required by npm
     echo 'Building /src...'
     cd "$TO_SOURCE_DIR"
+    npm run build
     node_modules/.bin/tsc
     cd ..
 

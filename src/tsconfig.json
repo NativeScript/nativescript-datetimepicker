@@ -1,34 +1,37 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "removeComments": true,
-        "noLib": false,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "skipLibCheck": true,
-        "lib": ["es6", "dom"],
-        "sourceMap": true,
-        "pretty": true,
-        "allowUnreachableCode": false,
-        "allowUnusedLabels": false,
-        "noEmitHelpers": true,
-        "noEmitOnError": false,
-        "noImplicitAny": false,
-        "noImplicitReturns": true,
-        "noImplicitUseStrict": false,
-        "noFallthroughCasesInSwitch": true
-    },
-    "angularCompilerOptions": {
-        "genDir": ".",
-        "skipMetadataEmit": false,
-        "skipTemplateCodegen": true,
-        "strictMetadataEmit": true
-    },
-    "exclude": [
-        "node_modules",
-        "platforms",
-        "hooks"
-    ],
-    "compileOnSave": false
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "pretty": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noEmitHelpers": true,
+    "noEmitOnError": false,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitUseStrict": false,
+    "noFallthroughCasesInSwitch": true,
+    "plugins": [
+      {
+        "transform": "@nativescript/webpack/transformers/ns-transform-native-classes",
+        "type": "raw"
+      }
+    ]
+  },
+  "angularCompilerOptions": {
+    "genDir": ".",
+    "skipMetadataEmit": false,
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true
+  },
+  "exclude": ["node_modules", "platforms", "hooks"],
+  "compileOnSave": false
 }

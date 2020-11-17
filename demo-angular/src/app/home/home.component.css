@@ -1,48 +1,48 @@
 .content {
-    font-size: 16;
-    font-weight: bold;
-    margin-top: 12;
-    margin-bottom: 6;
-    color: #303F9F;
+  font-size: 16;
+  font-weight: bold;
+  margin-top: 12;
+  margin-bottom: 6;
+  color: #303f9f;
 }
 
 .header {
-    font-size: 16;
-    margin-top: 12;
-    margin-bottom: 6;
-    color: white;
-    background-color: #2196F3;
-    text-align: center;
+  font-size: 16;
+  margin-top: 12;
+  margin-bottom: 6;
+  color: white;
+  background-color: #2196f3;
+  text-align: center;
 }
 
 label {
-    padding: 6 4;
+  padding: 6 4;
 }
 
 timepickerfield,
 datepickerfield {
-    padding: 12 4;
+  padding: 12 4;
 }
 
 timepickerfield.apply-css,
 datepickerfield.apply-css {
-    color: #CDDC39;
-    background-color: #00796B;
-    font-size: 20;
-    font-weight: bold;
-    padding: 20;
+  color: #cddc39;
+  background-color: #00796b;
+  font-size: 20;
+  font-weight: bold;
+  padding: 20;
 }
 
 .date-time-picker.apply-css {
-    color: #00796B;
-    background-color: #CDDC39;
+  color: #00796b;
+  background-color: #cddc39;
 }
 
 .date-time-picker-spinners.apply-css {
-    color: #CDDC39;
-    background-color: #00796B;
+  color: #cddc39;
+  background-color: #00796b;
 }
 
 .date-time-picker-buttons.apply-css {
-    color: #00796B;
+  color: #00796b;
 }

@@ -1,18 +1,17 @@
-import Vue from "nativescript-vue";
+import Vue from 'nativescript-vue';
 
-import Home from "./components/Home";
+import Home from './components/Home';
 
-import DateTimePicker from "nativescript-datetimepicker/vue";
+import DateTimePicker from 'nativescript-datetimepicker/vue';
 Vue.use(DateTimePicker);
 
 new Vue({
-
-    template: `
+  template: `
         <Frame>
             <Home />
         </Frame>`,
 
-    components: {
-        Home
-    }
+  components: {
+    Home
+  }
 }).$start();

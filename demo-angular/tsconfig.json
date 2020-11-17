@@ -1,46 +1,31 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "declaration": false,
-        "removeComments": true,
-        "noLib": false,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "lib": [
-            "es6",
-            "dom",
-            "es2015.iterable"
-        ],
-        "pretty": true,
-        "allowUnreachableCode": false,
-        "allowUnusedLabels": false,
-        "noEmitHelpers": true,
-        "noEmitOnError": false,
-        "noImplicitAny": false,
-        "noImplicitReturns": true,
-        "noImplicitUseStrict": false,
-        "noFallthroughCasesInSwitch": true,
-        "skipLibCheck": true,
-        "baseUrl": ".",
-        "paths": {
-            "*": [
-                "./node_modules/tns-core-modules/*",
-                "./node_modules/*"
-            ],
-            "~/*": [
-                "src/*"
-            ]
-        }
-    },
-    "include": [
-        "../src",
-        "**/*"
-    ],
-    "exclude": [
-        "../src/node_modules",
-        "node_modules",
-        "platforms"
-    ],
-    "compileOnSave": false
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "declaration": false,
+    "removeComments": false,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es6", "dom", "es2015.iterable", "es2017"],
+    "pretty": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noEmitHelpers": true,
+    "noEmitOnError": false,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitUseStrict": false,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./node_modules/tns-core-modules/*", "./node_modules/*"],
+      "~/*": ["src/*"]
+    }
+  },
+  "include": ["../src", "**/*"],
+  "exclude": ["../src/node_modules", "node_modules", "platforms"],
+  "compileOnSave": false
 }

@@ -1,4 +1,3 @@
-import { TimePickerFieldBase } from "./time-picker-field.common";
+import { TimePickerFieldBase } from './time-picker-field.common';
 
-export class TimePickerField extends TimePickerFieldBase {
-}
+export class TimePickerField extends TimePickerFieldBase {}

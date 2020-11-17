@@ -1,1 +1,1 @@
-export * from "./nativescript-datetimepicker.module";
+export * from './nativescript-datetimepicker.module';

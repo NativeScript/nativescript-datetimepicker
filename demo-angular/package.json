@@ -1,13 +1,4 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.datetimepicker.demong",
-    "tns-android": {
-      "version": "6.2.0"
-    },
-    "tns-ios": {
-      "version": "6.2.0"
-    }
-  },
   "description": "NativeScript DateTimePicker Demo NG",
   "license": "SEE LICENSE IN LICENSE FILE",
   "repository": "https://github.com/NativeScript/nativescript-datetimepicker",
@@ -18,29 +9,32 @@
     "e2e-watch": "tsc -p e2e --watch"
   },
   "dependencies": {
-    "@angular/animations": "~8.2.0",
-    "@angular/common": "~8.2.0",
-    "@angular/compiler": "~8.2.0",
-    "@angular/core": "~8.2.0",
-    "@angular/forms": "~8.2.0",
-    "@angular/platform-browser": "~8.2.0",
-    "@angular/platform-browser-dynamic": "~8.2.0",
-    "@angular/router": "~8.2.0",
-    "nativescript-angular": "~8.20.0",
+    "@angular/animations": "~10.1.0",
+    "@angular/common": "~10.1.0",
+    "@angular/compiler": "~10.1.0",
+    "@angular/core": "~10.1.0",
+    "@angular/forms": "~10.1.0",
+    "@angular/platform-browser": "~10.1.0",
+    "@angular/platform-browser-dynamic": "~10.1.0",
+    "@angular/router": "~10.1.0",
     "nativescript-datetimepicker": "file:../src",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.10",
     "rxjs": "^6.4.0",
-    "tns-core-modules": "^6.0.0",
-    "zone.js": "^0.9.1"
+    "zone.js": "^0.9.1",
+    "@nativescript/core": "~7.0.13",
+    "@nativescript/angular": "~10.1.7"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "~8.2.0",
-    "@ngtools/webpack": "~8.2.0",
+    "@angular/compiler-cli": "~10.1.0",
+    "@nativescript/android": "7.0.1",
+    "@nativescript/ios": "7.0.5",
+    "@nativescript/webpack": "~3.0.8",
+    "@ngtools/webpack": "~10.1.0",
     "@types/node": "~10.12.18",
-    "nativescript-dev-webpack": "^1.3.0",
-    "tslint": "~5.11.0",
-    "typescript": "~3.5.3"
+    "tslint": "~6.1.3",
+    "typescript": "3.9.7"
   },
-  "readme": "NativeScript DateTimePicker Demo NG"
+  "readme": "NativeScript DateTimePicker Demo NG",
+  "main": "main.js"
 }

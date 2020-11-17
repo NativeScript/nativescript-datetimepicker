@@ -1,2 +1,1 @@
-export declare class NativeScriptDateTimePickerModule {
-}
+export declare class NativeScriptDateTimePickerModule {}
