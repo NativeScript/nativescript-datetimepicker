@@ -1,3 +1,5 @@
+# ALL NativeScript 7 Issues should be posted here: https://github.com/NativeScript/plugins/
+
 ## NativeScript 7
 
 * Use `@nativescript/datetimepicker`: `~2.0.0`
